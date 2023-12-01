@@ -82,15 +82,15 @@ io.on('connection', (socket) => {
             if (data.direction === 'up') {
                 room.players[data.playerNo - 1].y -= 10;
 
-                if (room.players[data.playerNo - 1].y < 0) {
-                    room.players[data.playerNo - 1].y = 0;
+                if (room.players[data.playerNo - 1].x < 0) {
+                    room.players[data.playerNo - 1].x = 0;
                 }
             }
             else if (data.direction === 'down') {
                 room.players[data.playerNo - 1].y += 10;
 
-                if (room.players[data.playerNo - 1].y > 440) {
-                    room.players[data.playerNo - 1].y = 440;
+                if (room.players[data.playerNo - 1].x > 440) {
+                    room.players[data.playerNo - 1].x = 440;
                 }
             }
         }
