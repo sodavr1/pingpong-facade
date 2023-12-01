@@ -19,7 +19,6 @@ let rooms = [];
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-
     socket.on("join", () => {
         console.log(rooms);
 
@@ -198,8 +197,6 @@ function startGame(room) {
         io.to(room.id).emit('updateGame', room);
     }, 1000 / 60);
 }
-
-
 
 server.listen(3000, () => {
     console.log('listening on *:3000');

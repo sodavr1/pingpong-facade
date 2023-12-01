@@ -1,21 +1,13 @@
 import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-
-
 import Ball from "./ball.js";
 import Player from "./player.js";
-
 
 let startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startGame);
 
-
-
 let message = document.getElementById('message');
-
-
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
-
 
 let player1;
 let player2;
@@ -24,7 +16,6 @@ let ball;
 let isGameStarted = false;
 let playerNo = 0;
 let roomID;
-
 
 const socket = io("http://localhost:3000", {
     transports: ['websocket']
@@ -120,7 +111,6 @@ socket.on("endGame", (room) => {
 
 function draw() {
     ctx.clearRect(0, 0, 500, 800);
-
     player1.draw(ctx);
     player2.draw(ctx);
     ball.draw(ctx);
