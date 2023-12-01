@@ -11,6 +11,9 @@ app.use(cors({
     origin: '*'
 }));
 
+
+app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.send('<h1>PING PONG SERVER -- </h1>');
 });
