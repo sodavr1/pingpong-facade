@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js --port 8000 && cd/public && http-server index.html",
+    "start": "node index.js && cd/public && http-server index.html",
     "dev": "nodemon index.js"
   },
   "keywords": [],
