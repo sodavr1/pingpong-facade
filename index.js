@@ -6,6 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require('cors');
 const { futimesSync } = require('fs');
+const PORT = process.env.PORT || 3030;
 
 app.use(cors({
     origin: '*'
@@ -201,6 +202,6 @@ function startGame(room) {
     }, 1000 / 60);
 }
 
-server.listen(3000, () => {
-    console.log('listening on *:3000');
+server.listen(PORT, () => {
+    console.log('listening on'+{PORT});
 });
