@@ -111,7 +111,7 @@ socket.on("endGame", (room) => {
 
 
     setTimeout(() => {
-        ctx.clearRect(0, 0, 800, 500);
+        ctx.clearRect(0, 0, 500, 800);
         startBtn.style.display = 'block';
     }, 2000);
 });
@@ -119,8 +119,7 @@ socket.on("endGame", (room) => {
 
 
 function draw() {
-    ctx.clearRect(0, 0, 800, 500);
-
+    ctx.clearRect(0, 0, 500, 800);
 
     player1.draw(ctx);
     player2.draw(ctx);
