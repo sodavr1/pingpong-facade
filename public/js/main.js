@@ -96,7 +96,7 @@ socket.on("updateGame", (room) => {
 
 socket.on("endGame", (room) => {
     isGameStarted = false;
-    message.innerText = `${room.winner === playerNo ? "You are Winner!" : "You are Loser!"}`;
+    message.innerText = `${room.winner === playerNo ? playerNo+'wins' : "You are Loser!"}`;
 
     socket.emit("leave", roomID);
 
