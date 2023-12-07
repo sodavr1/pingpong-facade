@@ -6,7 +6,7 @@
 
 body {
     background-color: black;
-    /*color: black;*/
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;

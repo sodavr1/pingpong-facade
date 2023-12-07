@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require('cors');
 const { futimesSync } = require('fs');
-const PORT = process.env.PORT || 3000; // Use the environment variable PORT if available, or default to 3000
+const PORT = process.env.PORT || 10000; // Use the environment variable PORT if available, or default to 10000
 
 app.use(cors({
     origin: '*'
