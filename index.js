@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require('cors');
 const { futimesSync } = require('fs');
-const PORT = process.env.PORT || 3000; // Use the environment variable PORT if available, or default to 3000
+const PORT = process.env.PORT || 10000; // Use the environment variable PORT if available, or default to 3000
 
 app.use(cors({
     origin: '*'
@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
 });
 
 let rooms = [];
+
+io.listen(+process.env.PORT);
 
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -115,8 +117,6 @@ io.on('connection', (socket) => {
         socket.leave(roomID);
     });
 
-
-
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
@@ -164,7 +164,6 @@ function startGame(room) {
             room.ball.dy *= -1;
         }
 
-
         // left and right walls
         if (room.ball.x < 5) {
             room.players[1].score += 1;
@@ -181,7 +180,6 @@ function startGame(room) {
             room.ball.dx = -1;
             room.ball.dy = 0;
         }
-
 
         if (room.players[0].score === 10) {
             room.winner = 1;
@@ -204,3 +202,4 @@ function startGame(room) {
 server.listen(PORT, () => {
     console.log('listening on'+{PORT});
 });
+
