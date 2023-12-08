@@ -96,18 +96,15 @@ socket.on("updateGame", (room) => {
 
 socket.on("endGame", (room) => {
     isGameStarted = false;
-    message.innerText = `${room.winner === playerNo ? playerNo+'wins' : "You are Loser!"}`;
+    message.innerText = `${room.winner === playerNo ? playerNo+'wins' : "You Lost!"}`;
 
     socket.emit("leave", roomID);
-
 
     setTimeout(() => {
         ctx.clearRect(0, 0, 800, 500);
         startBtn.style.display = 'block';
     }, 2000);
 });
-
-
 
 function draw() {
     ctx.clearRect(0, 0, 800, 500);

@@ -56,6 +56,7 @@ body {
     padding: 10px 20px;
     color: black;
 }
+
 #startBtn:hover {
     filter: brightness(0.8);
 }
