@@ -1,4 +1,4 @@
-import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 import Ball from "./ball.js";
 import Player from "./player.js";
 
@@ -17,7 +17,7 @@ let isGameStarted = false;
 let playerNo = 0;
 let roomID;
 
-const socket = io("http://localhost:3000", {
+const socket = io("http://localhost:10000", {
     transports: ['websocket']
 });
 

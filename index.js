@@ -26,7 +26,6 @@ io.on('connection', (socket) => {
     console.log('a user connected');
     socket.on("join", () => {
         console.log(rooms);
-
         // get room 
         let room;
         if (rooms.length > 0 && rooms[rooms.length - 1].players.length === 1) {
