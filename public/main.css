@@ -30,7 +30,7 @@ body {
     background-color: black;
     width:1080px;
     height:100%;
-    rotate: 180;
+    rotateY(180);
 }
 
 #message {
