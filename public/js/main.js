@@ -2,7 +2,7 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
 const grid = 10;
-const paddleHeight = grid * 2.5; // 80
+const paddleHeight = grid * 4; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 9;
