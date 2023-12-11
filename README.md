@@ -9,7 +9,12 @@ html / css / javascript
 ### Play Links
 - Game [Game](public/index.html)
 - Score [Game](public/score.html)
-- 
+
+## Spec
+- index.html - screen E (Game)
+- score.html - screen ?
+
+###  Issue log 
   
 
 

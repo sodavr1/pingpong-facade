@@ -10,6 +10,7 @@ var ballSpeed = 1.5;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 var gameStarted = false;
+const maxScore = 10;
 
 const leftPaddle = {
     x: grid * 2,
@@ -52,6 +53,71 @@ function drawScores() {
     context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
 }
 
+// score checking and end game animation   
+function scoreCheck(rightPlayerScore, leftPlayerScore){
+    console.log('score check called')
+    if (rightPlayerScore === maxScore){
+        console.log('player 1 won');
+        endGameAnimation();
+    }
+    else if (leftPlayerScore === maxScore){
+        console.log('player 2 won');
+        endGameAnimation();
+    } 
+}
+
+function endGameAnimation(){
+ // Set canvas size
+ canvas.width = window.innerWidth;
+ canvas.height = window.innerHeight;
+
+ const pixelSize = 10; // Size of each pixel square
+ const rows = Math.floor(canvas.width / pixelSize);
+ const cols = Math.floor(canvas.height / pixelSize);
+
+ // Function to draw a pixel square
+ function drawPixel(x, y, color) {
+    context.fillStyle = color;
+    context.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+ }
+
+ // Initialize pixels array with random black and white values
+ const pixels = [];
+ for (let i = 0; i < rows; i++) {
+   pixels[i] = [];
+   for (let j = 0; j < cols; j++) {
+     pixels[i][j] = Math.random() < 0.5 ? '#000' : '#fff';
+   }
+ }
+
+ // Function to update and draw the animation frame
+ function update() {
+   for (let i = 0; i < rows; i++) {
+     for (let j = 0; j < cols; j++) {
+       if (Math.random() < 0.01) {
+         // Dissolve pixel with a random chance
+         pixels[i][j] = '#000';
+       }
+       drawPixel(i, j, pixels[i][j]);
+     }
+   }
+ }
+
+ // Animation loop
+ function animate() {
+   requestAnimationFrame(animate);
+   update();
+ }
+
+ // Resize canvas when the window is resized
+ window.addEventListener('resize', () => {
+   canvas.width = window.innerWidth;
+   canvas.height = window.innerHeight;
+ });
+
+ // Start the animation loop
+ animate();
+}
 function loop() {
     requestAnimationFrame(loop);
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -103,6 +169,7 @@ function loop() {
         }
 
         drawScores(); // Update scores on canvas
+        scoreCheck(rightPlayerScore, leftPlayerScore); // check for end game condition to trigger end animation
 
         if (collides(ball, leftPaddle)) {
             ball.dx *= -1;
@@ -125,6 +192,7 @@ function loop() {
         context.font = '30px Arial';
         context.fillText('Click Start Game to Play', 200, canvas.height / 2);
     }
+    
 }
 
 document.getElementById('startButton').addEventListener('click', function() {
@@ -159,3 +227,4 @@ document.addEventListener('keyup', function(e) {
 });
 
 requestAnimationFrame(loop);
+
