@@ -47,9 +47,9 @@ function collides(obj1, obj2) {
 
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '18px Arial';
+    context.font = '12px Arial';
     context.fillText('Player 1: ' + leftPlayerScore, 45, 30);
-    context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 150, 30);
+    context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
 }
 
 function loop() {
