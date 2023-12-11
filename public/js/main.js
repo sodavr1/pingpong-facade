@@ -1,17 +1,12 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
-// Rotate the canvas by 180 degrees
-context.translate(canvas.width / 2, canvas.height / 2);
-context.rotate(-Math.PI / 2); // -90 degrees in radians
-context.translate(-canvas.height / 2, -canvas.width / 2);
-
-const grid = 15;
-const paddleHeight = grid * 5; // 80
+const grid = 10;
+const paddleHeight = grid * 2.5; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 9;
-var ballSpeed = 2.5;
+var ballSpeed = 1.5;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 var gameStarted = false;
@@ -23,6 +18,7 @@ const leftPaddle = {
     height: paddleHeight,
     dy: 0
 };
+
 const rightPaddle = {
     x: canvas.width - grid * 3,
     y: canvas.height / 2 - paddleHeight / 2,
@@ -30,6 +26,7 @@ const rightPaddle = {
     height: paddleHeight,
     dy: 0
 };
+
 const ball = {
     x: canvas.width / 2,
     y: canvas.height / 2,
@@ -50,8 +47,8 @@ function collides(obj1, obj2) {
 
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '24px Arial';
-    context.fillText('Player 1: ' + leftPlayerScore, 20, 30);
+    context.font = '18px Arial';
+    context.fillText('Player 1: ' + leftPlayerScore, 45, 30);
     context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 150, 30);
 }
 
