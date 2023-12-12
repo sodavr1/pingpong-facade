@@ -11,6 +11,7 @@ var ballSpeed = 1.5;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 var gameStarted = false;
+let gameOver = false;
 const maxScore = 10;
 
 // DRAWING CONTROLS 
@@ -62,17 +63,23 @@ function scoreCheck(rightPlayerScore, leftPlayerScore){
     console.log('score check called')
     if (rightPlayerScore === maxScore){
         console.log('player 1 won');
-        endGameAnimation();
+        gameOver = true;
+        fade(1,0.1); // delta, alpha
+        Timer(endGameAnimation(),5500);
     }
     else if (leftPlayerScore === maxScore){
         console.log('player 2 won');
-        endGameAnimation();
+        gameOver = true;
+        fade(1,0.1);
+        Timer(endGameAnimation(),5500);
     } 
 }
 
 // END GAME ANIMATION
 function endGameAnimation(){
- const pixelSize = 30; // Size of each pixel square
+ context.clearRect(0, 0, canvas.width, canvas.height);
+
+ const pixelSize = 45; // Size of each pixel square
  const rows = Math.floor(canvas.width / pixelSize);
  const cols = Math.floor(canvas.height / pixelSize);
 
@@ -171,7 +178,7 @@ function loop() {
         }
 
         drawScores(); // Update scores on canvas
-        scoreCheck(rightPlayerScore, leftPlayerScore); // check for end game condition to trigger end animation
+        !gameOver ? scoreCheck(rightPlayerScore, leftPlayerScore) : null; // check for end game condition to trigger end animation
 
         if (collides(ball, leftPaddle)) {
             ball.dx *= -1;
@@ -231,48 +238,18 @@ document.addEventListener('keyup', function(e) {
 
 requestAnimationFrame(loop);
 
-// reusuable functions
+// REUSEABLE FUNCTIONS
 
-function fadeIn()
-{
-    // context.clearRect(0,0, canvas.width,canvas.height);
-    context.globalAlpha = ga;
-    var photo = new Image();
-    photo .onload = function()
-    {
-        context.drawImage(photo , 0, 0, 450, 500);
-    };
-    photo .src = "photo .jpg";
-
-    ga = ga + 0.1;
-
-    if (ga > 1.0)
-    {
-        fadeOut();
-        goingUp = false;
-        clearInterval(timerId);
-
-    }
+// fade with custum alpha, data params
+function fade(alpha, delta) {
+    alpha += delta;
+    if (alpha <= 0 || alpha >= 1) delta = -delta;
+    /// clear canvas, set alpha and re-draw image
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.globalAlpha = alpha;
+    requestAnimationFrame(loop); // or use setTimeout(loop, 16) in older browsers
 }
 
-function fadeOut()
-{
-    // context.clearRect(0,0, canvas.width,canvas.height);
-    context.globalAlpha = ga;
-
-    var photo = new Image();
-    photo .onload = function()
-    {
-        context.drawImage(photo , 0, 0, 450, 500);
-    };
-    photo .src = "photo .jpg";
-
-    ga = ga - 0.1;
-
-    if (ga < 0)
-    {
-
-        goingUp = false;
-        clearInterval(timerId);
-    }
+function Timer(func, time){
+    return setTimeout(func,time)
 }
