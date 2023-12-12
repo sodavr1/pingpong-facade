@@ -7,7 +7,7 @@ Project for projectable html canvases using Symptholight to allow for playing vi
 html / css / javascript
 
 ### Play Links
-- Game [Game](public/index.html)
+- Game [Game](public/screenE.html)
 - Score [Game](public/score.html)
 
 ## Spec
