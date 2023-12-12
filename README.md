@@ -3,15 +3,21 @@ Project for projectable html canvases using Symptholight to allow for playing vi
 
 ![image](pingpong.png)
 
-## Ping Pong
+## Ping Pong frontend
 html / css / javascript
 
+## Backend
+To be decided (For scoring)
+
 ### Play Links
-- Game [Game](public/screenE.html)
-- Score [Game](public/score.html)
+
+- Game [Game](public/screens/screenE.html)
+- Screens
+- Score [Score](public/score.html)
 
 ## Spec
-- index.html - screen E (Game)
+- index.html - Main Menu
+- /Screens - Screens with setup
 - score.html - screen ?
 
 ###  Issue log 
