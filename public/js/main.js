@@ -3,7 +3,7 @@ const context = canvas.getContext('2d');
 
 // GAME GLOBALS VARS
 const grid = 10;
-const paddleHeight = grid * 4; // 80
+const paddleHeight = grid * 5; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 9;
