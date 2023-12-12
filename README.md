@@ -11,8 +11,7 @@ To be decided (For scoring)
 
 ### Play Links
 
-- Game [Game](public/screens/screenE.html)
-- Screens
+- Game [Game](public/index.html)
 - Score [Score](public/score.html)
 
 ## Spec
