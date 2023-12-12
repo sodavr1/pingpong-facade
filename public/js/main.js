@@ -1,6 +1,7 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
+// GAME GLOBALS VARS
 const grid = 10;
 const paddleHeight = grid * 4; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
@@ -12,6 +13,7 @@ var rightPlayerScore = 0;
 var gameStarted = false;
 const maxScore = 10;
 
+// DRAWING CONTROLS 
 const leftPaddle = {
     x: grid * 2,
     y: canvas.height / 2 - paddleHeight / 2,
@@ -39,6 +41,7 @@ const ball = {
     dy: -ballSpeed
 };
 
+// COLLIDING
 function collides(obj1, obj2) {
     return obj1.x < obj2.x + obj2.width &&
         obj1.x + obj1.width > obj2.x &&
@@ -46,6 +49,7 @@ function collides(obj1, obj2) {
         obj1.y + obj1.height > obj2.y;
 }
 
+// SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
     context.font = '12px Arial';
@@ -53,7 +57,7 @@ function drawScores() {
     context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
 }
 
-// score checking and end game animation   
+// SCORE CHECKING END GAME TRIGGERS  
 function scoreCheck(rightPlayerScore, leftPlayerScore){
     console.log('score check called')
     if (rightPlayerScore === maxScore){
@@ -66,12 +70,9 @@ function scoreCheck(rightPlayerScore, leftPlayerScore){
     } 
 }
 
+// END GAME ANIMATION
 function endGameAnimation(){
- // Set canvas size
- canvas.width = window.innerWidth;
- canvas.height = window.innerHeight;
-
- const pixelSize = 10; // Size of each pixel square
+ const pixelSize = 30; // Size of each pixel square
  const rows = Math.floor(canvas.width / pixelSize);
  const cols = Math.floor(canvas.height / pixelSize);
 
@@ -118,10 +119,11 @@ function endGameAnimation(){
  // Start the animation loop
  animate();
 }
+
+// MAIN PING PONG LOOP
 function loop() {
     requestAnimationFrame(loop);
     context.clearRect(0, 0, canvas.width, canvas.height);
-
     if (gameStarted) {
         leftPaddle.y += leftPaddle.dy;
         rightPaddle.y += rightPaddle.dy;
@@ -195,6 +197,7 @@ function loop() {
     
 }
 
+// START BUTTON AND LISTENERS
 document.getElementById('startButton').addEventListener('click', function() {
     gameStarted = true;
     canvas.style.display = 'block';
@@ -228,3 +231,48 @@ document.addEventListener('keyup', function(e) {
 
 requestAnimationFrame(loop);
 
+// reusuable functions
+
+function fadeIn()
+{
+    // context.clearRect(0,0, canvas.width,canvas.height);
+    context.globalAlpha = ga;
+    var photo = new Image();
+    photo .onload = function()
+    {
+        context.drawImage(photo , 0, 0, 450, 500);
+    };
+    photo .src = "photo .jpg";
+
+    ga = ga + 0.1;
+
+    if (ga > 1.0)
+    {
+        fadeOut();
+        goingUp = false;
+        clearInterval(timerId);
+
+    }
+}
+
+function fadeOut()
+{
+    // context.clearRect(0,0, canvas.width,canvas.height);
+    context.globalAlpha = ga;
+
+    var photo = new Image();
+    photo .onload = function()
+    {
+        context.drawImage(photo , 0, 0, 450, 500);
+    };
+    photo .src = "photo .jpg";
+
+    ga = ga - 0.1;
+
+    if (ga < 0)
+    {
+
+        goingUp = false;
+        clearInterval(timerId);
+    }
+}
