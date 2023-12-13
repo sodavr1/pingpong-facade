@@ -34,6 +34,54 @@
       "player1": 10,
       "player2": 0,
       "winner": "PLAYER 1"
+    },
+    {
+      "id": 6,
+      "player1": 1,
+      "player2": 10,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": 7,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 8,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 9,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 10,
+      "player1": 5,
+      "player2": 10,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": 11,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 12,
+      "player1": 3,
+      "player2": 10,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": 13,
+      "player1": 0,
+      "player2": 10,
+      "winner": "PLAYER2"
     }
   ]
 }

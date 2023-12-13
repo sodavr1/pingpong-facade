@@ -10,7 +10,7 @@ const paddleHeight = grid * 5; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 9;
-var ballSpeed = 1.5;
+var ballSpeed = 2.2;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 let winner;
@@ -66,7 +66,6 @@ function drawScores() {
 function scoreCheck(rightPlayerScore, leftPlayerScore) {
     console.log('score check called')
     if (rightPlayerScore === maxScore) {
-        console.log('player 1 won');
         gameOver = true;
         winner = 'Player 1'
         fade(1, 0.1); // delta, alpha
@@ -74,7 +73,6 @@ function scoreCheck(rightPlayerScore, leftPlayerScore) {
         Timer(endGameAnimation(), 5500);
     }
     else if (leftPlayerScore === maxScore) {
-        console.log('player 2 won');
         gameOver = true;
         winner = 'Player 2'
         fade(1, 0.1);
@@ -129,14 +127,9 @@ function endGameAnimation() {
         update();
     }
 
-    // Resize canvas when the window is resized
-    window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
     // Start the animation loop
     animate();
+  
 }
 
 // MAIN PING PONG LOOP
@@ -248,8 +241,6 @@ document.addEventListener('keyup', function (e) {
     }
 });
 
-requestAnimationFrame(loop);
-
 // REUSEABLE FUNCTIONS
 
 // fade with custum alpha, data params
@@ -262,12 +253,12 @@ function fade(alpha, delta) {
     requestAnimationFrame(loop); // or use setTimeout(loop, 16) in older browsers
 }
 
+// timer with params
 function Timer(func, time) {
     return setTimeout(func, time)
 }
 
 // DATA REQUESTS
-
 function SendScoreData() {
     if (gameOver) {
         fetch("http://localhost:3000/scores", {
