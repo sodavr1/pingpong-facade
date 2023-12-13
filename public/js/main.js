@@ -266,7 +266,7 @@ function Timer(func, time) {
     return setTimeout(func, time)
 }
 
-// EXPORT FUNCTION
+// DATA REQUESTS
 
 function SendScoreData() {
     if (gameOver) {
@@ -276,7 +276,7 @@ function SendScoreData() {
                 id: gameID++, // MAKE THIS A  UUID LATER
                 player1: leftPlayerScore,
                 player2: rightPlayerScore,
-                winner: 'TEST'
+                winner: leftPlayerScore >  rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
@@ -287,4 +287,4 @@ function SendScoreData() {
     }
 }
 
-export default { finalScore, fade, Timer };
+export default {fade, Timer };

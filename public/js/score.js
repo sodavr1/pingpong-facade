@@ -1,20 +1,27 @@
 
+let scoreArr; 
+//get updated score
+
+getScoreData();
+
+async function getScoreData() {
+  const response = await fetch("http://localhost:3000/scores");
+  scores = await response.json();
+  console.log(scores);
+}
 
 const canvas = document.getElementById('score');
 const context = canvas.getContext('2d');
-
-// SCORE GLOBALS VARS
-const grid = 10;
 
 // SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
     context.font = '25px Arial';
-    context.fillText('PREV GAME SCORE'// testval
+    context.fillText('P0NG GAME SCORE'// testval
     , 45,30);
-    context.fillText('^_^ PLAYER 1:' + finalScore.finalScore.player1Score // testval
+    context.fillText('^_^ PLAYER 1:'  // testval
     , 45, 70);
-    context.fillText('^_^ PLAYER 2:' + finalScore.finalScore.player2Score  // testval
+    context.fillText('0__0 PLAYER 2:'// testval
     , 45,120);
 }
 
@@ -25,5 +32,6 @@ drawScores();
    canvas.width = window.innerWidth;
    canvas.height = window.innerHeight;
  });
+
 
 

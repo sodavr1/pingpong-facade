@@ -28,6 +28,12 @@
       "player1": 10,
       "player2": 0,
       "winner": "TEST"
+    },
+    {
+      "id": 5,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
     }
   ]
 }
