@@ -7,12 +7,16 @@ const grid = 10;
 // SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '50px Arial';
-    context.fillText('Player 1: ' + 100 // testval
-    , 45, 30);
-    context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
+    context.font = '25px Arial';
+    context.fillText('PREV GAME SCORE'// testval
+    , 45,30);
+    context.fillText('^_^ PLAYER 1:' + 100 // testval
+    , 45, 70);
+    context.fillText('^_^ PLAYER 2:' + 100 // testval
+    , 45,120);
 }
 
+drawScores();
 
  // Resize canvas when the window is resized
  window.addEventListener('resize', () => {

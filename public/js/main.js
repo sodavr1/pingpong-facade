@@ -81,6 +81,7 @@ function scoreCheck(rightPlayerScore, leftPlayerScore){
 // END GAME ANIMATION
 function endGameAnimation(){
  context.clearRect(0, 0, canvas.width, canvas.height);
+ cancelAnimationFrame(loop);
 
  const pixelSize = 50; // Size of each pixel square
  const rows = Math.floor(canvas.width / pixelSize);
@@ -258,4 +259,14 @@ function fade(alpha, delta) {
 
 function Timer(func, time){
     return setTimeout(func,time)
+}
+
+// EXPORT FUNCTION
+
+function finalScore(){
+    if  (gameOver){
+        const finalScore = {player1Score:rightPlayerScore, player2Score:leftPlayerScore}
+        console.log('finale score debug'+finalScore);
+        return finalScore;
+    }
 }
