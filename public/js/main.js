@@ -10,6 +10,7 @@ var paddleSpeed = 9;
 var ballSpeed = 1.5;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
+let winner;
 var gameStarted = false;
 let gameOver = false;
 const maxScore = 10;
@@ -64,12 +65,14 @@ function scoreCheck(rightPlayerScore, leftPlayerScore){
     if (rightPlayerScore === maxScore){
         console.log('player 1 won');
         gameOver = true;
+        winner = 'Player 1'
         fade(1,0.1); // delta, alpha
         Timer(endGameAnimation(),5500);
     }
     else if (leftPlayerScore === maxScore){
         console.log('player 2 won');
         gameOver = true;
+        winner = 'Player 2'
         fade(1,0.1);
         Timer(endGameAnimation(),5500);
     } 
@@ -79,7 +82,7 @@ function scoreCheck(rightPlayerScore, leftPlayerScore){
 function endGameAnimation(){
  context.clearRect(0, 0, canvas.width, canvas.height);
 
- const pixelSize = 45; // Size of each pixel square
+ const pixelSize = 50; // Size of each pixel square
  const rows = Math.floor(canvas.width / pixelSize);
  const cols = Math.floor(canvas.height / pixelSize);
 
@@ -97,6 +100,9 @@ function endGameAnimation(){
      pixels[i][j] = Math.random() < 0.5 ? '#000' : '#fff';
    }
  }
+
+    context.font = "30px Arial";
+    context.fillText({winner}+"Wins", 10, 50);
 
  // Function to update and draw the animation frame
  function update() {
