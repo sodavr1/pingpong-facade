@@ -13,12 +13,18 @@ To be decided (For scoring)
 
 - Main Menu [Main Menu](public/index.html)
 
+### Local testing (to get round cors issues with module js types)
+npm install 
+npx http-server
+
 ## Spec
 - index.html - Main Menu
 - /Screens - Screens with setup
 - score.html - screen ?
 
 ###  Issue log 
+- animation breaks on end game - main game loop doesn't finish
+
   
 
 

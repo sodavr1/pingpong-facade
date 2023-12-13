@@ -1,3 +1,5 @@
+import finalScore from "./main";
+
 const canvas = document.getElementById('score');
 const context = canvas.getContext('2d');
 
@@ -10,9 +12,9 @@ function drawScores() {
     context.font = '25px Arial';
     context.fillText('PREV GAME SCORE'// testval
     , 45,30);
-    context.fillText('^_^ PLAYER 1:' + 100 // testval
+    context.fillText('^_^ PLAYER 1:' + finalScore.finalScore.player1Score // testval
     , 45, 70);
-    context.fillText('^_^ PLAYER 2:' + 100 // testval
+    context.fillText('^_^ PLAYER 2:' + finalScore.finalScore.player2Score  // testval
     , 45,120);
 }
 

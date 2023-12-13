@@ -270,3 +270,5 @@ function finalScore(){
         return finalScore;
     }
 }
+
+export default {finalScore, fade, Timer};
