@@ -1,7 +1,10 @@
+
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
 // GAME GLOBALS VARS
+let gameID = 0; //temp for testing
+
 const grid = 10;
 const paddleHeight = grid * 5; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
@@ -60,78 +63,80 @@ function drawScores() {
 }
 
 // SCORE CHECKING END GAME TRIGGERS  
-function scoreCheck(rightPlayerScore, leftPlayerScore){
+function scoreCheck(rightPlayerScore, leftPlayerScore) {
     console.log('score check called')
-    if (rightPlayerScore === maxScore){
+    if (rightPlayerScore === maxScore) {
         console.log('player 1 won');
         gameOver = true;
         winner = 'Player 1'
-        fade(1,0.1); // delta, alpha
-        Timer(endGameAnimation(),5500);
+        fade(1, 0.1); // delta, alpha
+        SendScoreData();
+        Timer(endGameAnimation(), 5500);
     }
-    else if (leftPlayerScore === maxScore){
+    else if (leftPlayerScore === maxScore) {
         console.log('player 2 won');
         gameOver = true;
         winner = 'Player 2'
-        fade(1,0.1);
-        Timer(endGameAnimation(),5500);
-    } 
+        fade(1, 0.1);
+        SendScoreData();
+        Timer(endGameAnimation(), 5500);
+    }
 }
 
 // END GAME ANIMATION
-function endGameAnimation(){
- context.clearRect(0, 0, canvas.width, canvas.height);
- cancelAnimationFrame(loop);
+function endGameAnimation() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    cancelAnimationFrame(loop);
 
- const pixelSize = 50; // Size of each pixel square
- const rows = Math.floor(canvas.width / pixelSize);
- const cols = Math.floor(canvas.height / pixelSize);
+    const pixelSize = 50; // Size of each pixel square
+    const rows = Math.floor(canvas.width / pixelSize);
+    const cols = Math.floor(canvas.height / pixelSize);
 
- // Function to draw a pixel square
- function drawPixel(x, y, color) {
-    context.fillStyle = color;
-    context.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
- }
+    // Function to draw a pixel square
+    function drawPixel(x, y, color) {
+        context.fillStyle = color;
+        context.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+    }
 
- // Initialize pixels array with random black and white values
- const pixels = [];
- for (let i = 0; i < rows; i++) {
-   pixels[i] = [];
-   for (let j = 0; j < cols; j++) {
-     pixels[i][j] = Math.random() < 0.5 ? '#000' : '#fff';
-   }
- }
+    // Initialize pixels array with random black and white values
+    const pixels = [];
+    for (let i = 0; i < rows; i++) {
+        pixels[i] = [];
+        for (let j = 0; j < cols; j++) {
+            pixels[i][j] = Math.random() < 0.5 ? '#000' : '#fff';
+        }
+    }
 
     context.font = "30px Arial";
-    context.fillText({winner}+"Wins", 10, 50);
+    context.fillText({ winner } + "Wins", 10, 50);
 
- // Function to update and draw the animation frame
- function update() {
-   for (let i = 0; i < rows; i++) {
-     for (let j = 0; j < cols; j++) {
-       if (Math.random() < 0.01) {
-         // Dissolve pixel with a random chance
-         pixels[i][j] = '#000';
-       }
-       drawPixel(i, j, pixels[i][j]);
-     }
-   }
- }
+    // Function to update and draw the animation frame
+    function update() {
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                if (Math.random() < 0.01) {
+                    // Dissolve pixel with a random chance
+                    pixels[i][j] = '#000';
+                }
+                drawPixel(i, j, pixels[i][j]);
+            }
+        }
+    }
 
- // Animation loop
- function animate() {
-   requestAnimationFrame(animate);
-   update();
- }
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        update();
+    }
 
- // Resize canvas when the window is resized
- window.addEventListener('resize', () => {
-   canvas.width = window.innerWidth;
-   canvas.height = window.innerHeight;
- });
+    // Resize canvas when the window is resized
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 
- // Start the animation loop
- animate();
+    // Start the animation loop
+    animate();
 }
 
 // MAIN PING PONG LOOP
@@ -208,18 +213,18 @@ function loop() {
         context.font = '30px Arial';
         context.fillText('Click Start Game to Play', 200, canvas.height / 2);
     }
-    
+
 }
 
 // START BUTTON AND LISTENERS
-document.getElementById('startButton').addEventListener('click', function() {
+document.getElementById('startButton').addEventListener('click', function () {
     gameStarted = true;
     canvas.style.display = 'block';
     this.style.display = 'none';
     requestAnimationFrame(loop);
 });
 
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
     } else if (e.which === 40) {
@@ -233,7 +238,7 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     if (e.which === 38 || e.which === 40) {
         rightPaddle.dy = 0;
     }
@@ -257,18 +262,29 @@ function fade(alpha, delta) {
     requestAnimationFrame(loop); // or use setTimeout(loop, 16) in older browsers
 }
 
-function Timer(func, time){
-    return setTimeout(func,time)
+function Timer(func, time) {
+    return setTimeout(func, time)
 }
 
 // EXPORT FUNCTION
 
-function finalScore(){
-    if  (gameOver){
-        const finalScore = {player1Score:rightPlayerScore, player2Score:leftPlayerScore}
-        console.log('finale score debug'+finalScore);
-        return finalScore;
+function SendScoreData() {
+    if (gameOver) {
+        fetch("http://localhost:3000/scores", {
+            method: "POST",
+            body: JSON.stringify({
+                id: gameID++, // MAKE THIS A  UUID LATER
+                player1: leftPlayerScore,
+                player2: rightPlayerScore,
+                winner: 'TEST'
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
     }
 }
 
-export default {finalScore, fade, Timer};
+export default { finalScore, fade, Timer };

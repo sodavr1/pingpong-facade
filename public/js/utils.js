@@ -18,7 +18,6 @@ function fadeIn()
         fadeOut();
         goingUp = false;
         clearInterval(timerId);
-
     }
 }
 
@@ -38,7 +37,6 @@ function fadeOut()
 
     if (ga < 0)
     {
-
         goingUp = false;
         clearInterval(timerId);
     }

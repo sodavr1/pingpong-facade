@@ -1,4 +1,4 @@
-import finalScore from "./main";
+
 
 const canvas = document.getElementById('score');
 const context = canvas.getContext('2d');
@@ -27,7 +27,3 @@ drawScores();
  });
 
 
-
-function Timer(func, time){
-    return setTimeout(func,time)
-}
