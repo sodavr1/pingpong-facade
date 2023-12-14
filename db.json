@@ -100,6 +100,18 @@
       "player1": 2,
       "player2": 10,
       "winner": "PLAYER2"
+    },
+    {
+      "id": 17,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 18,
+      "player1": 10,
+      "player2": 2,
+      "winner": "PLAYER 1"
     }
   ]
 }

@@ -4,9 +4,8 @@ body{
     width:100%;
     height:100%;
     background-color: black;
-    padding: 0;
+    padding:0;
     margin: 0;
-    list-style: none;
     display: flex;
 }
 
@@ -18,13 +17,13 @@ h1{
 
 .navbar-load {
     background-image: linear-gradient(to right, #e80089, #00e5f1, #3c5693);
-    height:125px;
+    height:140px;
     animation: load 4s linear infinite;
 }
 
 .navbar-load2 {
     background-image: linear-gradient(to left, #e80089, #00e5f1, #3c5693);
-    height:125px;
+    height:140px;
     animation: load2 4s linear infinite;
 }
 
