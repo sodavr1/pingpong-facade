@@ -1,4 +1,4 @@
-
+import * as uuid from 'uuid/v4';
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 

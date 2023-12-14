@@ -1,24 +1,23 @@
+const myFont = new FontFace('myFont', 'url(https://fonts.googleapis.com/css2?family=Silkscreen&display=swap)');
 
-let scoreArr;
+myFont.load().then(function(font){
+    // with canvas, if this is ommited won't work
+    document.fonts.add(font);
+    console.log('Font loaded');
+});
+
+let scoreData;
 //get updated score
 
 getScoreData();
 
 async function getScoreData() {
-    fetch("http://localhost:3000/livescore", {
-        method: "GET",
-        body: JSON.stringify({
-            id, // MAKE THIS A  UUID LATER
-            player1,
-            player2,
-        }),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8"
-        }
-    })
-        .then((response) => response.json())
-        .then((json) => console.log(json));
+        const response = await fetch('/livescore');
+        const liveScores = await response.json();
+        console.log(liveScores );
 }
+
+scoreData = getScoreData()
 
 const canvas = document.getElementById('score');
 const context = canvas.getContext('2d');
@@ -26,12 +25,12 @@ const context = canvas.getContext('2d');
 // SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '25px Arial';
+    context.font = '25px Silkscreen';
     context.fillText('LIVE SCORE'// testval
         , 45,30);
-    context.fillText('^_^ PLAYER 1:'  // testval
+    context.fillText('^_^ P1 10'  // testval
         , 45, 70);
-    context.fillText('0__0 PLAYER 2:'// testval
+    context.fillText('0__0 P2 0'// testval
         , 45,120);
 }
 

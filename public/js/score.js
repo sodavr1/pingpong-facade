@@ -1,7 +1,4 @@
-
-let scoreArr; 
 //get updated score
-
 getScoreData();
 
 async function getScoreData() {
@@ -16,12 +13,12 @@ const context = canvas.getContext('2d');
 // SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '25px Arial';
+    context.font = '25px Silkscreen';
     context.fillText('P0NG GAME SCORE'// testval
     , 45,30);
-    context.fillText('^_^ PLAYER 1:'  // testval
+    context.fillText('^_^ P1 10'   // testval
     , 45, 70);
-    context.fillText('0__0 PLAYER 2:'// testval
+    context.fillText('0__0 P2 5'// testval
     , 45,120);
 }
 
