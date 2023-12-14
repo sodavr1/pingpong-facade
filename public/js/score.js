@@ -14,7 +14,7 @@ const context = canvas.getContext('2d');
 function drawScores() {
     context.fillStyle = 'white';
     context.font = '25px Silkscreen';
-    context.fillText('P0NG GAME SCORE'// testval
+    context.fillText('PREV GAME SCORE'// testval
     , 45,30);
     context.fillText('^_^ P1 10'   // testval
     , 45, 70);

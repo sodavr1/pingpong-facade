@@ -1,4 +1,3 @@
-import * as uuid from 'uuid/v4';
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
@@ -262,7 +261,6 @@ function Timer(func, time) {
 }
 
 // DATA REQUESTS
-
 // update live score
 function updateLiveScoreData() {
     if (!gameOver) {
@@ -301,4 +299,3 @@ function SendScoreData() {
             .then((json) => console.log(json));
     }
 }
-
