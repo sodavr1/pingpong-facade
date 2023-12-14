@@ -12,18 +12,18 @@ body{
 h1{
     font-family: 'Silkscreen', sans-serif;
     color: white;
-    font-size: 16.8em;
+    font-size: 3.2em;
 }
 
 .navbar-load {
     background-image: linear-gradient(to right, #e80089, #00e5f1, #3c5693);
-    height:4em;
+    height:2em;
     animation: load 4s linear infinite;
 }
 
 .navbar-load2 {
     background-image: linear-gradient(to left, #e80089, #00e5f1, #3c5693);
-    height:4em;
+    height:2em;
     animation: load2 4s linear infinite;
 }
 
