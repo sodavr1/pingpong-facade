@@ -4,6 +4,7 @@ const context = canvas.getContext('2d');
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
+let liveScoreID = 0;
 
 const grid = 10;
 const paddleHeight = grid * 5; // 80
@@ -170,8 +171,10 @@ function loop() {
         if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
             if (ball.x < 0) {
                 rightPlayerScore++;
+                updateLiveScoreData();
             } else {
                 leftPlayerScore++;
+                updateLiveScoreData();
             }
             ball.resetting = true;
 
@@ -259,6 +262,27 @@ function Timer(func, time) {
 }
 
 // DATA REQUESTS
+
+// update live score
+function updateLiveScoreData() {
+    if (!gameOver) {
+        fetch("http://localhost:3000/livescore", {
+            method: "POST",
+            body: JSON.stringify({
+                // MAKE THIS A  UUID LATER
+                id: liveScoreID++,
+                player1: leftPlayerScore,
+                player2: rightPlayerScore,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    }
+}
+// update backend with final score or live score
 function SendScoreData() {
     if (gameOver) {
         fetch("http://localhost:3000/scores", {
@@ -278,4 +302,3 @@ function SendScoreData() {
     }
 }
 
-export default {fade, Timer };
