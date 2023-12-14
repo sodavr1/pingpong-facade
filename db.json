@@ -82,6 +82,24 @@
       "player1": 0,
       "player2": 10,
       "winner": "PLAYER2"
+    },
+    {
+      "id": 14,
+      "player1": 4,
+      "player2": 10,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": 15,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
+    },
+    {
+      "id": 16,
+      "player1": 2,
+      "player2": 10,
+      "winner": "PLAYER2"
     }
   ]
 }
