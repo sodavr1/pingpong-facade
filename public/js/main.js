@@ -17,7 +17,6 @@ var ballSpeed = 2.2;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
 
-let winner;
 var gameStarted = false;
 let gameOver = false;
 const maxScore = 10;
@@ -66,8 +65,6 @@ function drawScores() {
     context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 110, 30);
 }
 
-
-
 // END GAME ANIMATION
 function endGameAnimation() {
     let startTime;
@@ -99,23 +96,22 @@ function endGameAnimation() {
         const textX = canvas.width / 2;
         const textY = canvas.height / 2;
         context.fillText(text, textX, textY);
-
-
           // Place text at the center
           const textXScore = canvas.width / 2;
           const textYScore = canvas.height / 3;
           context.fillText('Score:' +leftPlayerScore > rightPlayerScore ? leftPlayerScore : rightPlayerScore, textXScore, textYScore);
-
-        leftPlayerScore = 0;
-        rightPlayerScore = 0;
-        gameOver = false;
-
         if (elapsed < duration) {
           requestAnimationFrame(animate);
         }
+        else{
+            leftPlayerScore = 0;
+            rightPlayerScore = 0;
+            SendScoreData();
+            gameOver = false;
+            gameStarted = true;
+        }
       }
       requestAnimationFrame(animate);
-      SendScoreData();
 }
 
 // MAIN PING PONG LOOP
@@ -156,10 +152,10 @@ function loop() {
         if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
             if (ball.x < 0) {
                 rightPlayerScore++;
-                updateLiveScoreData();
+                // updateLiveScoreData();
             } else {
                 leftPlayerScore++;
-                updateLiveScoreData();
+                // updateLiveScoreData();
             }
             ball.resetting = true;
 
@@ -184,7 +180,6 @@ function loop() {
         context.fillStyle = 'lightgrey';
         context.fillRect(0, 0, canvas.width, grid);
         context.fillRect(0, canvas.height - grid, canvas.width, canvas.height);
-
         for (let i = grid; i < canvas.height - grid; i += grid * 2) {
             context.fillRect(canvas.width / 2 - grid / 2, i, grid, grid);
         }
@@ -198,9 +193,9 @@ function loop() {
 // START BUTTON AND LISTENERS
 document.getElementById('startButton').addEventListener('click', function () {
     gameStarted = true;
+    countdownTimer(timeLimit, endGameAnimation());
     canvas.style.display = 'block';
     this.style.display = 'none';
-    countdownTimer(timeLimit, endGameAnimation());
     requestAnimationFrame(loop);
 });
 
