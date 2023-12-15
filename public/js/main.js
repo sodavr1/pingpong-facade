@@ -6,13 +6,13 @@ let gameID = 0; //temp for testing
 let gameUUID = crypto.randomUUID();
 let liveUUID = crypto.randomUUID();
 
-const timeLimit = 120; //seconds
+const timeLimit = 20; //seconds
 
 const grid = 10;
 const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
-var paddleSpeed = 9;
+var paddleSpeed = 11;
 var ballSpeed = 2.2;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
@@ -74,7 +74,6 @@ function endGameAnimation() {
     const duration = 8000; // 5 seconds
     const winnerText = leftPlayerScore > rightPlayerScore ? 'Player 1' : 'Player 2';
     const text = 'Winner\n'+winnerText;
-    SendScoreData();
       function animate(currentTime) {
         if (!startTime) {
           startTime = currentTime;
@@ -101,6 +100,12 @@ function endGameAnimation() {
         const textY = canvas.height / 2;
         context.fillText(text, textX, textY);
 
+
+          // Place text at the center
+          const textXScore = canvas.width / 2;
+          const textYScore = canvas.height / 3;
+          context.fillText('Score:' +leftPlayerScore > rightPlayerScore ? leftPlayerScore : rightPlayerScore, textXScore, textYScore);
+
         leftPlayerScore = 0;
         rightPlayerScore = 0;
         gameOver = false;
@@ -110,6 +115,7 @@ function endGameAnimation() {
         }
       }
       requestAnimationFrame(animate);
+      SendScoreData();
 }
 
 // MAIN PING PONG LOOP
@@ -198,6 +204,8 @@ document.getElementById('startButton').addEventListener('click', function () {
     requestAnimationFrame(loop);
 });
 
+
+
 document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
@@ -220,9 +228,31 @@ document.addEventListener('keyup', function (e) {
         leftPaddle.dy = 0;
     }
 });
+function handleTouch(paddle, e) {
+    const touch = e.touches[0];
+    const newY = touch.clientY - canvas.getBoundingClientRect().top - paddle.height / 2;
+
+    // Ensure the paddle stays within the canvas boundaries
+    const maxY = canvas.height - paddle.height;
+    const minY = 0;
+
+    paddle.y = Math.max(minY, Math.min(newY, maxY));
+    // drawPaddle(ctx, paddle);
+}
+
+canvas.addEventListener("touchstart", function (e) {
+    handleTouch(leftPaddle, e);
+    handleTouch(rightPaddle, e);
+    e.preventDefault(); // Prevent default touch behavior
+});
+
+canvas.addEventListener("touchmove", function (e) {
+    handleTouch(leftPaddle, e);
+    handleTouch(rightPaddle, e);
+});
+
 
 // REUSEABLE FUNCTIONS
-
 // fade with custum alpha, data params
 function fade(alpha, delta) {
     alpha += delta;

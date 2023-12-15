@@ -5,6 +5,12 @@
       "player1": 0,
       "player2": 0,
       "winner": ""
+    },
+    {
+      "id": 1,
+      "player1": 10,
+      "player2": 0,
+      "winner": "PLAYER 1"
     }
   ],
   "livescore": [
@@ -30,6 +36,136 @@
     },
     {
       "id": "239907b4-65b0-4a50-b46c-df5d12a245f3",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "8ef682e0-05fc-4145-843e-2c99370d45ba",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": 17,
+      "player1": 4,
+      "player2": 0
+    },
+    {
+      "id": 18,
+      "player1": 5,
+      "player2": 0
+    },
+    {
+      "id": 19,
+      "player1": 6,
+      "player2": 0
+    },
+    {
+      "id": 20,
+      "player1": 7,
+      "player2": 0
+    },
+    {
+      "id": 21,
+      "player1": 8,
+      "player2": 0
+    },
+    {
+      "id": 22,
+      "player1": 9,
+      "player2": 0
+    },
+    {
+      "id": "855ee690-6d72-4ee3-a2be-c0b386d9aa0a",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "4b8a74d1-f945-497c-a719-1333f2940767",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "acb9b2be-577f-4a36-9a59-cb7b81ab18f8",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": 23,
+      "player1": 10,
+      "player2": 0
+    },
+    {
+      "id": "04f0a784-174f-446e-9cd0-b87c574cdf89",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "04a1b180-9bf1-46ec-af6b-e94574cad0dd",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "d11117a4-2a82-4108-a494-6926a30b96e3",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "475704dd-a690-4b7b-b170-e0a8f3f46815",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "5a1a9a24-3ec3-4066-bf95-b9f10a0eac61",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "97894f68-de7d-4e78-b2c7-ebb738db763c",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "6741eaad-a894-4ad5-bec4-09bfdedfc864",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "de58384a-b97b-44af-b931-39c63c1ab89f",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "1dc41efa-1e60-40ca-8169-98b628285bf1",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "301a1d89-e540-4a5a-a2ee-84e38de73c5f",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "7e18f050-8e28-4a1d-9cc1-5d33862c2fc9",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "286cf3f1-7b7f-4350-8db1-c23178ad2ce8",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "5f5af616-8938-4fa8-aa21-a7af7cd27b8c",
+      "player1": 0,
+      "player2": 1
+    },
+    {
+      "id": "ae897ed8-7b78-4e70-91a9-ee1ea0c4abee",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "dcce66e0-feec-4ef3-b6a3-3e029b3def0b",
       "player1": 1,
       "player2": 0
     }
