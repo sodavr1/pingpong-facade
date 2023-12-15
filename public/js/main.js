@@ -70,66 +70,59 @@ function scoreCheck(rightPlayerScore, leftPlayerScore) {
         winner = 'Player 1'
         fade(1, 0.1); // delta, alpha
         SendScoreData();
-        Timer(endGameAnimation(), 5500);
+        endGameAnimation()
     }
     else if (leftPlayerScore === maxScore) {
         gameOver = true;
         winner = 'Player 2'
         fade(1, 0.1);
         SendScoreData();
-        Timer(endGameAnimation(), 5500);
+        endGameAnimation()
     }
 }
 
 // END GAME ANIMATION
 function endGameAnimation() {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    cancelAnimationFrame(loop);
+    let startTime;
+    const duration = 8000; // 5 seconds
+    const text = 'Winner '+winner;
 
-    const pixelSize = 50; // Size of each pixel square
-    const rows = Math.floor(canvas.width / pixelSize);
-    const cols = Math.floor(canvas.height / pixelSize);
-
-    // Function to draw a pixel square
-    function drawPixel(x, y, color) {
-        context.fillStyle = color;
-        context.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
-    }
-
-    // Initialize pixels array with random black and white values
-    const pixels = [];
-    for (let i = 0; i < rows; i++) {
-        pixels[i] = [];
-        for (let j = 0; j < cols; j++) {
-            pixels[i][j] = Math.random() < 0.5 ? '#000' : '#fff';
+      function animate(currentTime) {
+        if (!startTime) {
+          startTime = currentTime;
         }
-    }
 
-    context.font = "30px Arial";
-    context.fillText({ winner } + "Wins", 10, 50);
+        const elapsed = currentTime - startTime;
+        const alpha = Math.min(1, elapsed / duration);
 
-    // Function to update and draw the animation frame
-    function update() {
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < cols; j++) {
-                if (Math.random() < 0.01) {
-                    // Dissolve pixel with a random chance
-                    pixels[i][j] = '#000';
-                }
-                drawPixel(i, j, pixels[i][j]);
-            }
+        // Clear the canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Set the background color with alpha value for fading effect
+        context.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Set text properties
+        context.font = '40px Arial';
+        context.fillStyle = 'black';
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+
+        // Place text at the center
+        const textX = canvas.width / 2;
+        const textY = canvas.height / 2;
+        context.fillText(text, textX, textY);
+
+        leftPlayerScore = 0;
+        rightPlayerScore = 0;
+
+        if (elapsed < duration) {
+          requestAnimationFrame(animate);
         }
-    }
+      }
 
-    // Animation loop
-    function animate() {
-        requestAnimationFrame(animate);
-        update();
-    }
+      requestAnimationFrame(animate);
 
-    // Start the animation loop
-    animate();
-  
 }
 
 // MAIN PING PONG LOOP
@@ -252,7 +245,6 @@ function fade(alpha, delta) {
     /// clear canvas, set alpha and re-draw image
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.globalAlpha = alpha;
-    requestAnimationFrame(loop); // or use setTimeout(loop, 16) in older browsers
 }
 
 // timer with params
@@ -289,7 +281,7 @@ function SendScoreData() {
                 id: gameID++, // MAKE THIS A  UUID LATER
                 player1: leftPlayerScore,
                 player2: rightPlayerScore,
-                winner: leftPlayerScore >  rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
+                winner: leftPlayerScore > rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
             }),
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
