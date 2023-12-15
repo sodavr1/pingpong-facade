@@ -115,6 +115,7 @@ function endGameAnimation() {
 
         leftPlayerScore = 0;
         rightPlayerScore = 0;
+        gameOver = false;
 
         if (elapsed < duration) {
           requestAnimationFrame(animate);
