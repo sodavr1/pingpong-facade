@@ -3,7 +3,10 @@ const context = canvas.getContext('2d');
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
-let liveScoreID = 0;
+let gameUUID = crypto.randomUUID();
+let liveUUID = crypto.randomUUID();
+
+const timeLimit = 120; //seconds
 
 const grid = 10;
 const paddleHeight = grid * 8; // 80
@@ -59,28 +62,11 @@ function collides(obj1, obj2) {
 function drawScores() {
     context.fillStyle = 'white';
     context.font = '12px Silkscreen';
-    context.fillText('Player 1: ' + leftPlayerScore, 45, 30);
-    context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
+    context.fillText('Player 1: ' + leftPlayerScore, 85, 30);
+    context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 110, 30);
 }
 
-// SCORE CHECKING END GAME TRIGGERS  
-function scoreCheck(rightPlayerScore, leftPlayerScore) {
-    console.log('score check called');
-    if (rightPlayerScore === maxScore) {
-        gameOver = true;
-        winner = 'Player 1'
-        fade(1, 0.1); // delta, alpha
-        SendScoreData();
-        endGameAnimation();
-    }
-    else if (leftPlayerScore === maxScore) {
-        gameOver = true;
-        winner = 'Player 2'
-        fade(1, 0.1);
-        SendScoreData();
-        endGameAnimation();
-    }
-}
+
 
 // END GAME ANIMATION
 function endGameAnimation() {
@@ -88,7 +74,7 @@ function endGameAnimation() {
     const duration = 8000; // 5 seconds
     const winnerText = leftPlayerScore > rightPlayerScore ? 'Player 1' : 'Player 2';
     const text = 'Winner\n'+winnerText;
-
+    SendScoreData();
       function animate(currentTime) {
         if (!startTime) {
           startTime = currentTime;
@@ -179,7 +165,6 @@ function loop() {
         }
 
         drawScores(); // Update scores on canvas
-        !gameOver ? scoreCheck(rightPlayerScore, leftPlayerScore) : null; // check for end game condition to trigger end animation
 
         if (collides(ball, leftPaddle)) {
             ball.dx *= -1;
@@ -202,7 +187,6 @@ function loop() {
         context.font = '30px Silkscreen';
         context.fillText('Click Start Game to Play', 200, canvas.height / 2);
     }
-
 }
 
 // START BUTTON AND LISTENERS
@@ -210,6 +194,7 @@ document.getElementById('startButton').addEventListener('click', function () {
     gameStarted = true;
     canvas.style.display = 'block';
     this.style.display = 'none';
+    countdownTimer(timeLimit, endGameAnimation());
     requestAnimationFrame(loop);
 });
 
@@ -219,7 +204,6 @@ document.addEventListener('keydown', function (e) {
     } else if (e.which === 40) {
         rightPaddle.dy = paddleSpeed;
     }
-
     if (e.which === 87) {
         leftPaddle.dy = -paddleSpeed;
     } else if (e.which === 83) {
@@ -253,6 +237,23 @@ function Timer(func, time) {
     return setTimeout(func, time)
 }
 
+function countdownTimer(seconds, callback) {
+    let remainingTime = seconds;
+    function updateTimer() {
+        if (remainingTime > 0) {
+            console.log(`${remainingTime} seconds remaining`);
+            remainingTime--;
+            setTimeout(updateTimer, 1000); // Update every 1 second (1000 milliseconds)
+        } else {
+            endGameAnimation();
+            if (callback && typeof callback === "function") {
+                callback(); // Execute the callback function when the timer reaches zero
+            }
+        }
+    }
+    updateTimer(); // Start the countdown
+}
+
 // DATA REQUESTS
 // update live score
 function updateLiveScoreData() {
@@ -261,7 +262,7 @@ function updateLiveScoreData() {
             method: "POST",
             body: JSON.stringify({
                 // MAKE THIS A  UUID LATER
-                id: liveScoreID++,
+                id: liveUUID,
                 player1: leftPlayerScore,
                 player2: rightPlayerScore,
             }),
@@ -276,10 +277,11 @@ function updateLiveScoreData() {
 // update backend with final score or live score
 function SendScoreData() {
     if (gameOver) {
+        console.log(gameUUID);
         fetch("http://localhost:3000/scores", {
             method: "POST",
             body: JSON.stringify({
-                id: gameID++, // MAKE THIS A  UUID LATER
+                id: gameUUID, // MAKE THIS A  UUID LATER
                 player1: leftPlayerScore,
                 player2: rightPlayerScore,
                 winner: leftPlayerScore > rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
