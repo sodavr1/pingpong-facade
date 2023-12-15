@@ -6,13 +6,14 @@ let gameID = 0; //temp for testing
 let liveScoreID = 0;
 
 const grid = 10;
-const paddleHeight = grid * 5; // 80
+const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
 var paddleSpeed = 9;
 var ballSpeed = 2.2;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
+
 let winner;
 var gameStarted = false;
 let gameOver = false;
@@ -22,7 +23,7 @@ const maxScore = 10;
 const leftPaddle = {
     x: grid * 2,
     y: canvas.height / 2 - paddleHeight / 2,
-    width: grid,
+    width: grid * 2,
     height: paddleHeight,
     dy: 0
 };
@@ -30,7 +31,7 @@ const leftPaddle = {
 const rightPaddle = {
     x: canvas.width - grid * 3,
     y: canvas.height / 2 - paddleHeight / 2,
-    width: grid,
+    width: grid * 2,
     height: paddleHeight,
     dy: 0
 };
@@ -38,8 +39,8 @@ const rightPaddle = {
 const ball = {
     x: canvas.width / 2,
     y: canvas.height / 2,
-    width: grid,
-    height: grid,
+    width: grid * 2,
+    height: grid * 2,
     backgroundColor: 'red',
     resetting: false,
     dx: ballSpeed,
@@ -57,27 +58,27 @@ function collides(obj1, obj2) {
 // SCORE DRAWING
 function drawScores() {
     context.fillStyle = 'white';
-    context.font = '12px Arial';
+    context.font = '12px Silkscreen';
     context.fillText('Player 1: ' + leftPlayerScore, 45, 30);
     context.fillText('Player 2: ' + rightPlayerScore, canvas.width - 100, 30);
 }
 
 // SCORE CHECKING END GAME TRIGGERS  
 function scoreCheck(rightPlayerScore, leftPlayerScore) {
-    console.log('score check called')
+    console.log('score check called');
     if (rightPlayerScore === maxScore) {
         gameOver = true;
         winner = 'Player 1'
         fade(1, 0.1); // delta, alpha
         SendScoreData();
-        endGameAnimation()
+        endGameAnimation();
     }
     else if (leftPlayerScore === maxScore) {
         gameOver = true;
         winner = 'Player 2'
         fade(1, 0.1);
         SendScoreData();
-        endGameAnimation()
+        endGameAnimation();
     }
 }
 
@@ -85,7 +86,8 @@ function scoreCheck(rightPlayerScore, leftPlayerScore) {
 function endGameAnimation() {
     let startTime;
     const duration = 8000; // 5 seconds
-    const text = 'Winner '+winner;
+    const winnerText = leftPlayerScore > rightPlayerScore ? 'Player 1' : 'Player 2';
+    const text = 'Winner\n'+winnerText;
 
       function animate(currentTime) {
         if (!startTime) {
@@ -103,7 +105,7 @@ function endGameAnimation() {
         context.fillRect(0, 0, canvas.width, canvas.height);
 
         // Set text properties
-        context.font = '40px Arial';
+        context.font = '40px Silkscreen';
         context.fillStyle = 'black';
         context.textAlign = 'center';
         context.textBaseline = 'middle';
@@ -121,9 +123,7 @@ function endGameAnimation() {
           requestAnimationFrame(animate);
         }
       }
-
       requestAnimationFrame(animate);
-
 }
 
 // MAIN PING PONG LOOP
@@ -199,7 +199,7 @@ function loop() {
         }
     } else {
         context.fillStyle = 'white';
-        context.font = '30px Arial';
+        context.font = '30px Silkscreen';
         context.fillText('Click Start Game to Play', 200, canvas.height / 2);
     }
 
