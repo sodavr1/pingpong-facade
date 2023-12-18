@@ -15,7 +15,7 @@ To be decided (For scoring)
 
 ### Local testing (to get round cors issues with module js types)
 npm install 
-npx json-server --watch db.json (for now)
+npx start
 
 ## Spec
 - index.html - Main Menu

@@ -1,18 +1,19 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
+const socket = io();
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
 let gameUUID = crypto.randomUUID();
 let liveUUID = crypto.randomUUID();
 
-const timeLimit = 20; //seconds
+let timeLimit = 20; //seconds
 
 const grid = 10;
 const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
-var paddleSpeed = 11;
+var paddleSpeed = 10;
 var ballSpeed = 2.2;
 var leftPlayerScore = 0;
 var rightPlayerScore = 0;
@@ -68,15 +69,17 @@ function drawScores() {
 // END GAME ANIMATION
 function endGameAnimation() {
     let startTime;
-    const duration = 8000; // 5 seconds
+    const duration = 10000; // 10 seconds
     const winnerText = leftPlayerScore > rightPlayerScore ? 'Player 1' : 'Player 2';
     const text = 'Winner\n'+winnerText;
+
       function animate(currentTime) {
         if (!startTime) {
           startTime = currentTime;
         }
 
         const elapsed = currentTime - startTime;
+
         const alpha = Math.min(1, elapsed / duration);
 
         // Clear the canvas
@@ -94,7 +97,7 @@ function endGameAnimation() {
 
         // Place text at the center
         const textX = canvas.width / 2;
-        const textY = canvas.height / 2;
+        const textY = canvas.height / 4;
         context.fillText(text, textX, textY);
           // Place text at the center
           const textXScore = canvas.width / 2;
@@ -104,14 +107,26 @@ function endGameAnimation() {
           requestAnimationFrame(animate);
         }
         else{
-            leftPlayerScore = 0;
-            rightPlayerScore = 0;
+            console.log('trigger reset');
+            gameOver = true;
+            ball.resetting = true;
             SendScoreData();
-            gameOver = false;
-            gameStarted = true;
+            resetGame();
         }
       }
       requestAnimationFrame(animate);
+}
+
+function resetGame(){
+    timeLimit = 20;
+    leftPlayerScore = 0;
+    rightPlayerScore = 0;
+    ball.resetting = false;
+
+    gameOver = false;
+    gameStarted = true;
+    countdownTimer(timeLimit, endGameAnimation);
+    requestAnimationFrame(loop);
 }
 
 // MAIN PING PONG LOOP
@@ -149,13 +164,15 @@ function loop() {
             ball.dy *= -1;
         }
 
-        if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting) {
+        if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting && !gameOver) {
             if (ball.x < 0) {
+                socket.emit('player 2 Scored', rightPlayerScore);
                 rightPlayerScore++;
-                // updateLiveScoreData();
+                updateLiveScoreData();
             } else {
+                socket.emit('player 1 Scored', leftPlayerScore);
                 leftPlayerScore++;
-                // updateLiveScoreData();
+                updateLiveScoreData();
             }
             ball.resetting = true;
 
@@ -193,9 +210,9 @@ function loop() {
 // START BUTTON AND LISTENERS
 document.getElementById('startButton').addEventListener('click', function () {
     gameStarted = true;
-    countdownTimer(timeLimit, endGameAnimation());
     canvas.style.display = 'block';
     this.style.display = 'none';
+    countdownTimer(timeLimit, endGameAnimation);
     requestAnimationFrame(loop);
 });
 
@@ -270,7 +287,6 @@ function countdownTimer(seconds, callback) {
             remainingTime--;
             setTimeout(updateTimer, 1000); // Update every 1 second (1000 milliseconds)
         } else {
-            endGameAnimation();
             if (callback && typeof callback === "function") {
                 callback(); // Execute the callback function when the timer reaches zero
             }
