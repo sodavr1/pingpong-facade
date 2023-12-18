@@ -24,6 +24,7 @@ const maxScore = 10;
 
 // DRAWING CONTROLS 
 const leftPaddle = {
+    id: 'leftPad',
     x: grid * 2,
     y: canvas.height / 2 - paddleHeight / 2,
     width: grid * 2,
@@ -32,6 +33,7 @@ const leftPaddle = {
 };
 
 const rightPaddle = {
+    id: 'rightPad',
     x: canvas.width - grid * 3,
     y: canvas.height / 2 - paddleHeight / 2,
     width: grid * 2,
@@ -240,30 +242,67 @@ document.addEventListener('keyup', function (e) {
         leftPaddle.dy = 0;
     }
 });
-function handleTouch(paddle, e) {
-    const touch = e.touches[0];
-    const newY = touch.clientY - canvas.getBoundingClientRect().top - paddle.height / 2;
+// Add touch event listeners to the canvas
+canvas.addEventListener('touchstart', handleTouchStart);
+canvas.addEventListener('touchmove', handleTouchMove);
 
-    // Ensure the paddle stays within the canvas boundaries
-    const maxY = canvas.height - paddle.height;
-    const minY = 0;
+// Variables to store touch positions
+let leftTouchY = null;
+let rightTouchY = null;
 
-    paddle.y = Math.max(minY, Math.min(newY, maxY));
-    // drawPaddle(ctx, paddle);
+// Handle touch start event
+function handleTouchStart(event) {
+    event.preventDefault();
+
+    // Iterate through all touches
+    for (let i = 0; i < event.touches.length; i++) {
+        const touch = event.touches[i];
+
+        // Check if touch is on the left or right side of the canvas
+        if (touch.clientX < canvas.width / 2) {
+            leftTouchY = touch.clientY;
+        } else {
+            rightTouchY = touch.clientY;
+        }
+    }
 }
 
-canvas.addEventListener("touchstart", function (e) {
-    handleTouch(leftPaddle, e);
-    handleTouch(rightPaddle, e);
-    e.preventDefault(); // Prevent default touch behavior
-});
+// Handle touch move event
+function handleTouchMove(event) {
+    event.preventDefault();
 
-canvas.addEventListener("touchmove", function (e) {
-    handleTouch(leftPaddle, e);
-    handleTouch(rightPaddle, e);
-});
+    // Iterate through all touches
+    for (let i = 0; i < event.touches.length; i++) {
+        const touch = event.touches[i];
 
+        // Update the paddle positions based on the touch movements
+        if (touch.clientX < canvas.width / 2) {
+            leftPaddle.y = touch.clientY - paddleHeight / 2;
+        } else {
+            rightPaddle.y = touch.clientY - paddleHeight / 2;
+        }
+    }
+}
 
+// Add touchend event listeners to reset touch positions when touches end
+canvas.addEventListener('touchend', handleTouchEnd);
+
+// Handle touch end event
+function handleTouchEnd(event) {
+    event.preventDefault();
+
+    // Iterate through all touches
+    for (let i = 0; i < event.touches.length; i++) {
+        const touch = event.touches[i];
+
+        // Check if touch has ended on the left or right side of the canvas
+        if (touch.clientX < canvas.width / 2) {
+            leftTouchY = null;
+        } else {
+            rightTouchY = null;
+        }
+    }
+}
 // REUSEABLE FUNCTIONS
 // fade with custum alpha, data params
 function fade(alpha, delta) {
