@@ -109,7 +109,6 @@ function endGameAnimation() {
         else{
             console.log('trigger reset');
             gameOver = true;
-            // ball.resetting = true;
             SendScoreData();
             resetGame();
         }
@@ -121,7 +120,7 @@ function resetGame(){
     timeLimit = 20;
     leftPlayerScore = 0;
     rightPlayerScore = 0;
-    ball.resetting = false;
+    // ball.resetting = false;
     ballSpeed = 2.2;
 
     gameOver = false;
@@ -168,12 +167,11 @@ function loop() {
         if ((ball.x < 0 || ball.x > canvas.width) && !ball.resetting && !gameOver) {
             if (ball.x < 0) {
                 rightPlayerScore++;
-                socket.emit('player2score', rightPlayerScore);
-
+                socket.emit('player2score', rightPlayerScore, liveUUID);
                 // updateLiveScoreData();
             } else {
                 leftPlayerScore++;
-                socket.emit('player1score', leftPlayerScore);
+                socket.emit('player1score', leftPlayerScore, liveUUID);
                 // updateLiveScoreData();
             }
             ball.resetting = true;
@@ -299,41 +297,41 @@ function countdownTimer(seconds, callback) {
 
 // DATA REQUESTS
 // update live score
-// function updateLiveScoreData() {
-//     if (!gameOver) {
-//         fetch("http://localhost:3000/livescore", {
-//             method: "POST",
-//             body: JSON.stringify({
-//                 // MAKE THIS A  UUID LATER
-//                 id: liveUUID,
-//                 player1: leftPlayerScore,
-//                 player2: rightPlayerScore,
-//             }),
-//             headers: {
-//                 "Content-type": "application/json; charset=UTF-8"
-//             }
-//         })
-//             .then((response) => response.json())
-//             .then((json) => console.log(json));
-//     }
-// }
-// // update backend with final score or live score
-// function SendScoreData() {
-//     if (gameOver) {
-//         console.log(gameUUID);
-//         fetch("http://localhost:3000/scores", {
-//             method: "POST",
-//             body: JSON.stringify({
-//                 id: gameUUID, // MAKE THIS A  UUID LATER
-//                 player1: leftPlayerScore,
-//                 player2: rightPlayerScore,
-//                 winner: leftPlayerScore > rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
-//             }),
-//             headers: {
-//                 "Content-type": "application/json; charset=UTF-8"
-//             }
-//         })
-//             .then((response) => response.json())
-//             .then((json) => console.log(json));
-//     }
-// }
+function updateLiveScoreData() {
+    if (!gameOver) {
+        fetch("http://localhost:3000/livescore", {
+            method: "POST",
+            body: JSON.stringify({
+                // MAKE THIS A  UUID LATER
+                id: liveUUID,
+                player1: leftPlayerScore,
+                player2: rightPlayerScore,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    }
+}
+// update backend with final score or live score
+function SendScoreData() {
+    if (gameOver) {
+        console.log(gameUUID);
+        fetch("http://localhost:3000/scores", {
+            method: "POST",
+            body: JSON.stringify({
+                id: gameUUID, // MAKE THIS A  UUID LATER
+                player1: leftPlayerScore,
+                player2: rightPlayerScore,
+                winner: leftPlayerScore > rightPlayerScore ? 'PLAYER 1' : 'PLAYER2'
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then((response) => response.json())
+            .then((json) => console.log(json));
+    }
+}

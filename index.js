@@ -8,9 +8,6 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-
-// app.use(express.static(__dirname + '/public'));
-
 app.use('/images',express.static(path.join(__dirname, '/images')));
 app.use('/js',express.static(path.join(__dirname, '/js')));
 app.use('/css',express.static(path.join(__dirname, '/css')));
@@ -20,11 +17,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-
-
 // Socket.IO connection handling
 io.on('connection', (socket) => {
   console.log('A user connected');
+
+  socket.emit("a user connected");
 
   // Example: Broadcast a message to all connected clients
   socket.on('chat message', (msg) => {
