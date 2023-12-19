@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "http-server": "^14.1.1",
     "socket.io": "^4.7.2",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "ws": "^8.15.1",
+    "xmlhttprequest-ssl": "^2.1.1"
   },
   "devDependencies": {
     "json-server": "^0.17.4"
@@ -13,7 +16,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npx json-server --watch db.json && node index.js",
+    "start": "npx json-server --watch db.json && DEBUG=socket.io* node index.js",
     "test": "test"
   },
   "repository": {

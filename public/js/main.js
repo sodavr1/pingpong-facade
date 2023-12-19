@@ -1,7 +1,6 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
-const socket = io();
-
+// socket io connection (CDN 4.7.2)
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
 let gameUUID = crypto.randomUUID();
