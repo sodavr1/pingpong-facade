@@ -4,6 +4,7 @@
     "express": "^4.18.2",
     "http-server": "^14.1.1",
     "socket.io": "^4.7.2",
+    "socket.io-client": "^4.7.2",
     "uuid": "^9.0.1",
     "ws": "^8.15.1",
     "xmlhttprequest-ssl": "^2.1.1"
@@ -14,9 +15,9 @@
   "name": "sodapong",
   "description": "Project for projectable html canvases using Symptholight to allow for playing videos games via the MMU Soda displays",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "npx json-server --watch db.json && DEBUG=socket.io* node index.js",
+    "start": "npx json-server --watch db.json && DEBUG=socket.io* node server.js",
     "test": "test"
   },
   "repository": {

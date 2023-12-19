@@ -1,6 +1,10 @@
+// import { io } from "socket.io-client";
+
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 // socket io connection (CDN 4.7.2)
+const socket = io('/pong');
+
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
 let gameUUID = crypto.randomUUID();

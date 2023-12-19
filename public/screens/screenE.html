@@ -5,15 +5,8 @@
     <title>SCREEN E</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz" crossorigin="anonymous"></script>
-    <script>
-        const socket = io();
-        socket.on("connect", () => {
-            console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-        });
-        socket.on("disconnect", () => {
-            console.log(socket.id); // undefined
-        });
+    <script type="module">
+        import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
     </script>
     <script src='../js/main.js' type = "module"></script>
 </head>
@@ -21,7 +14,8 @@
 <body>
     <button id="startButton">Start Game</button>
     <canvas width="418" height="652" id="game"></canvas>
-
+<!--    <script src="https://cdn.socket.io/4.7.2/socket.io.js"  crossorigin="anonymous"></script>-->
+<!--    </script>-->
 </body>
 
 </html>
