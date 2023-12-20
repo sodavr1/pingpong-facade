@@ -1,24 +1,25 @@
-const http = require("http");
-const sockets = require("./sockets");
-const io = require("socket.io");
+// Import required modules using ES6 import syntax
+import express from 'express';
+import {createServer} from 'http';
+import { Server } from 'socket.io';
 
-const port = process.env.PORT || 3000;
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer);
 
-const apiServer = require("./api");
-const httpServer = http.createServer(apiServer);
-
-const socketServer = io(httpServer, {
-  cors: {
-    origin: "http://localhost",
-    methods: ["GET", "POST"],
-    transports: ['websocket', 'polling'],
-    credentials: true
-  },
-  allowEIO3: true
+// Serve static files from the 'public' folder
+app.use(express.static("public"));
+// Socket.IO connection event
+io.on('connection', (socket) => {
+  console.log('A user connected');
+  // Example: Handling disconnection
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
+});
+// Start the server on port 3000
+const PORT = process.env.PORT || 3000;
+httpServer.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
 
-httpServer.listen(port, () => {
-  console.log(`Listening on port ${port}...`);
-});
-
-sockets.listen(socketServer);

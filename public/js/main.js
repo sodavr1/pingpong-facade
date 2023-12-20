@@ -1,7 +1,29 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
+
 // socket io connection (CDN 4.7.2)
-const socket = io('/pong');
+const socket = io('http://localhost:3000');
+
+// Emit a message to the server
+socket.emit('chat message', 'Hello, server!');
+
+// Listen for messages from the server
+socket.on('chat message', (msg) => {
+  console.log('Message from server:', msg);
+});
+
+socket.on("connect", () => {
+  console.log(`connect ${socket.id}`);
+});
+
+socket.on("connect_error", (err) => {
+  console.log(`connect_error due to ${err.message}`);
+});
+
+socket.on("disconnect", (reason) => {
+  console.log(`disconnect due to ${reason}`);
+});
+
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
@@ -345,7 +367,7 @@ function countdownTimer(seconds, callback) {
 // update live score
 function updateLiveScoreData() {
     if (!gameOver) {
-        fetch("http://localhost:3000/livescore", {
+        fetch("http://localhost:3001/livescore", {
             method: "POST",
             body: JSON.stringify({
                 // MAKE THIS A  UUID LATER
@@ -366,7 +388,7 @@ function updateLiveScoreData() {
 function SendScoreData() {
     if (gameOver) {
         console.log(gameUUID);
-        fetch("http://localhost:3000/scores", {
+        fetch("http://localhost:3001/scores", {
             method: "POST",
             body: JSON.stringify({
                 id: gameUUID, // MAKE THIS A  UUID LATER
