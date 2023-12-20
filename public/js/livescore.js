@@ -23,9 +23,9 @@ function drawScores() {
     context.font = '25px Silkscreen';
     context.fillText('LIVE SCORE'// testval
         , 45,30);
-    context.fillText('^_^ P1'+ ' '+liveScorePlayer1  // testval
+    context.fillText('^_^ P1'+ ' '+liveScorePlayer1  
         , 45, 70);
-    context.fillText('0__0 P2' +' '+liveScorePlayer2// testval
+    context.fillText('0__0 P2' +' '+liveScorePlayer2
         , 45,120);
 }
 

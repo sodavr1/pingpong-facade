@@ -1,22 +1,40 @@
+const waitTable = document.getElementById('gameQueue');
+
 // START BUTTON AND LISTENERS
 document.getElementById('joinGame').addEventListener('click', function () {
-    // canvas.style.display = 'block';
-    // this.style.display = 'none';
-    addGame(1,'John Smith', 'Mary Poppins',5)
+  
+    if (waitTable.rows.length<6){
+    addGame(5)
+    }
+    else{
+        alert('Max Queue reached, please return later')
+    }
 });
 
-function addGame(id, player1, player2, waitTime){
-    const waitTable = document.getElementById('gameQueue');
+const player1Name = document.querySelector('#player1'); 
+player1Name.addEventListener("change", (event) => {
+    player1Name.textContent = event.target.value;
+  });
+const player2Name = document.querySelector('#player2');
+player2Name.addEventListener("change", (event) => {
+    player2Name.textContent = event.target.value;
+  });
 
+
+
+function addGame(waitTime){
+    let waitID = crypto.randomUUID();
+    const player1Name = document.querySelector('#player1').value;  
+    const player2Name = document.querySelector('#player2').value;  
     const newRow = document.createElement('tr');
     const newHeadingID = document.createElement('td');
     const newHeadingp1Name = document.createElement('td');
     const newHeadingp2Name = document.createElement('td');
     const newHeadingWaitTime = document.createElement('td');
 
-    const idText = document.createTextNode(id);
-    const p1Text = document.createTextNode(player1);
-    const p2Text = document.createTextNode(player2);
+    const idText = document.createTextNode( waitID );
+    const p1Text = document.createTextNode(player1Name);
+    const p2Text = document.createTextNode(player2Name);
     const waitText = document.createTextNode(waitTime);
 
     newHeadingID.appendChild(idText);
