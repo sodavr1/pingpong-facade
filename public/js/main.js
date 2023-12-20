@@ -1,5 +1,3 @@
-// import { io } from "socket.io-client";
-import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 // socket io connection (CDN 4.7.2)
@@ -130,6 +128,8 @@ function resetGame(){
 
     gameOver = false;
     gameStarted = true;
+    // set new random UUID game ID to prevent duplication 
+    gameUUID = crypto.randomUUID()
     countdownTimer(timeLimit, endGameAnimation);
     requestAnimationFrame(loop);
 }
@@ -173,11 +173,15 @@ function loop() {
             if (ball.x < 0) {
                 rightPlayerScore++;
                 socket.emit('player2score', rightPlayerScore, liveUUID);
-                // updateLiveScoreData();
+                liveUUID = crypto.randomUUID();
+                updateLiveScoreData();
+              
             } else {
                 leftPlayerScore++;
                 socket.emit('player1score', leftPlayerScore, liveUUID);
-                // updateLiveScoreData();
+                liveUUID = crypto.randomUUID();
+                updateLiveScoreData();
+            
             }
             ball.resetting = true;
 
@@ -346,6 +350,7 @@ function updateLiveScoreData() {
             body: JSON.stringify({
                 // MAKE THIS A  UUID LATER
                 id: liveUUID,
+                gameid: gameUUID,
                 player1: leftPlayerScore,
                 player2: rightPlayerScore,
             }),

@@ -1,46 +1,43 @@
-const myFont = new FontFace('myFont', 'url(https://fonts.googleapis.com/css2?family=Silkscreen&display=swap)');
 
-myFont.load().then(function(font){
-    // with canvas, if this is ommited won't work
-    document.fonts.add(font);
-    console.log('Font loaded');
-});
+let liveScorePlayer1; let liveScorePlayer2;
+let liveScores = [];
 
-let scoreData;
-//get updated score
+setInterval(function () {getScoreData();}, 1000);
 
-getScoreData();
 
 async function getScoreData() {
         const response = await fetch('/livescore');
-        const liveScores = await response.json();
+        liveScores = await response.json();
+        liveScorePlayer1 = liveScores[liveScores.length-1].player1;
+        liveScorePlayer2 =liveScores[liveScores.length-1].player2;
+        drawScores();
         console.log(liveScores );
 }
 
-scoreData = getScoreData()
-
-const canvas = document.getElementById('score');
-const context = canvas.getContext('2d');
-
 // SCORE DRAWING
 function drawScores() {
+    const canvas = document.getElementById('score');
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = 'white';
     context.font = '25px Silkscreen';
     context.fillText('LIVE SCORE'// testval
         , 45,30);
-    context.fillText('^_^ P1 10'  // testval
+    context.fillText('^_^ P1'+ ' '+liveScorePlayer1  // testval
         , 45, 70);
-    context.fillText('0__0 P2 0'// testval
+    context.fillText('0__0 P2' +' '+liveScorePlayer2// testval
         , 45,120);
 }
 
-drawScores();
+getScoreData();
 
 // Resize canvas when the window is resized
 window.addEventListener('resize', () => {
+    const canvas = document.getElementById('score');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
 
+export default {getScoreData}
 
 

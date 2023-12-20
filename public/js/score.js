@@ -22,9 +22,9 @@ function drawScores() {
     context.font = '25px Silkscreen';
     context.fillText('PREV GAME SCORE'
     , 45,30);
-    context.fillText('^_^ Player 1 : '+prevScorePlayer1
+    context.fillText('^_^ Player 1 :'+' '+prevScorePlayer1
         , 45, 70);
-    context.fillText('0_0 Player 2 : '+prevScorePlayer2
+    context.fillText('0_0 Player 2 :'+' '+prevScorePlayer2
     , 45,120);
     context.fillText('WINNER'
         , 45,160);
