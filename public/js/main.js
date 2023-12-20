@@ -2,8 +2,8 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
 // socket io connection (CDN 4.7.2)
+// const socket = io('http://localhost:3000');
 const socket = io('http://localhost:3000');
-
 // Emit a message to the server
 socket.emit('chat message', 'Hello, server!');
 
@@ -24,6 +24,33 @@ socket.on("disconnect", (reason) => {
   console.log(`disconnect due to ${reason}`);
 });
 
+// room session drafting
+let room;
+
+console.log('a user connected', socket.id);
+
+socket.on('ready', () => {
+    room = 'room' + Math.floor(readyPlayerCount / 2);
+    socket.join(room);
+
+    console.log('Player ready', socket.id, room);
+
+    readyPlayerCount++;
+
+    if (readyPlayerCount % 2 === 0) {
+        emit('startGame', socket.id);
+    }
+});
+
+socket.on('paddleMove', (paddleData) => {
+    // Toggle 1 into 0, and 0 into 1
+    // const opponentPaddleIndex = 1 - paddleIndex;
+    // paddleX[opponentPaddleIndex] = paddleData.xPosition;
+  });
+
+socket.on('ballMove', (ballData) => {
+    // ({ ballX, ballY, score } = ballData);
+  });
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
@@ -243,6 +270,7 @@ document.getElementById('startButton').addEventListener('click', function () {
     gameStarted = true;
     canvas.style.display = 'block';
     this.style.display = 'none';
+    socket.emit('ready');
     countdownTimer(timeLimit, endGameAnimation);
     requestAnimationFrame(loop);
 });
@@ -252,6 +280,9 @@ document.getElementById('startButton').addEventListener('click', function () {
 document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
+        socket.emit('paddleMove', {
+            // xPosition: paddleX[paddleIndex],
+          });
     } else if (e.which === 40) {
         rightPaddle.dy = paddleSpeed;
     }

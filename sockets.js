@@ -1,7 +1,7 @@
 let readyPlayerCount = 0;
 
 function listen(io) {
-    const pongNamespace = io.of('/pong');
+    const pongNamespace = io.of('http://localhost:3000');
     pongNamespace.on('connection', (socket) => {
         let room;
 
