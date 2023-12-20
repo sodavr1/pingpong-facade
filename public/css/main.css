@@ -24,7 +24,7 @@ button {
     font-family: 'Silkscreen', sans-serif;
 }
 
-MEDIA QUERIES FOR MOBILE SUPPORT
+/* MEDIA QUERIES FOR MOBILE SUPPORT */
 
 /** Mobile Phones **/
 @media only screen and (max-width: 767px) {

@@ -1,5 +1,5 @@
 // import { io } from "socket.io-client";
-
+import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 // socket io connection (CDN 4.7.2)

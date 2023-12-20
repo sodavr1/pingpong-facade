@@ -1,10 +1,9 @@
 const http = require("http");
 const sockets = require("./sockets");
-const io = require("socket.io");
 
 const port = process.env.PORT || 3000;
-
-const apiServer = require("./api");
+const io = require("socket.io").listen(port);
+const apiServer = require("./api").listen(port);
 const httpServer = http.createServer(apiServer);
 const socketServer = io(httpServer, {
   cors: {
