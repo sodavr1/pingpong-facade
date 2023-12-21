@@ -1,19 +1,17 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
+let readyPlayerCount = 0;
 // socket io connection (CDN 4.7.2)
-// const socket = io('http://localhost:3000');
-const socket = io('http://localhost:3000');
-// Emit a message to the server
-socket.emit('chat message', 'Hello, server!');
+const socket = io('http://localhost:3000/');
 
-// Listen for messages from the server
-socket.on('chat message', (msg) => {
-  console.log('Message from server:', msg);
-});
 
 socket.on("connect", () => {
   console.log(`connect ${socket.id}`);
+// Emit a message to the server
+    socket.emit('chat message', 'Hello, server!');
+    socket.emit('ready');
+    joinRoom();
 });
 
 socket.on("connect_error", (err) => {
@@ -22,24 +20,6 @@ socket.on("connect_error", (err) => {
 
 socket.on("disconnect", (reason) => {
   console.log(`disconnect due to ${reason}`);
-});
-
-// room session drafting
-let room;
-
-console.log('a user connected', socket.id);
-
-socket.on('ready', () => {
-    room = 'room' + Math.floor(readyPlayerCount / 2);
-    socket.join(room);
-
-    console.log('Player ready', socket.id, room);
-
-    readyPlayerCount++;
-
-    if (readyPlayerCount % 2 === 0) {
-        emit('startGame', socket.id);
-    }
 });
 
 socket.on('paddleMove', (paddleData) => {
@@ -52,8 +32,38 @@ socket.on('ballMove', (ballData) => {
     // ({ ballX, ballY, score } = ballData);
   });
 
+// Function to join a room
+// Function to join a room
+// Function to join a room
+function joinRoom(roomName) {
+    socket.emit('joinRoom', roomName);
+}
+
+// Function to start the game
+function startGame() {
+    // Your game start logic goes here
+    console.log('Game started!');
+}
+
+// Listen for the 'playersReady' event from the server
+socket.on('playersReady', (playersCount) => {
+    console.log(`Players ready: ${playersCount}`);
+
+    // Check if there are at least two players to start the game
+    if (playersCount >= 2) {
+        startGame();
+    }
+});
+// socket.on('startGame', (socketID) => {
+//     gameStarted = true;
+//     canvas.style.display = 'block';
+//     this.style.display = 'none';
+//     // socket.emit('ready');
+//     countdownTimer(timeLimit, endGameAnimation);
+//     requestAnimationFrame(loop);
+// });
+
 // GAME GLOBALS VARS
-let gameID = 0; //temp for testing
 let gameUUID = crypto.randomUUID();
 let liveUUID = crypto.randomUUID();
 

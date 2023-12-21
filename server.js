@@ -2,6 +2,7 @@
 import express from 'express';
 import {createServer} from 'http';
 import { Server } from 'socket.io';
+// import sockets from './sockets.js'
 
 const app = express();
 const httpServer = createServer(app);
@@ -16,46 +17,40 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+    // Handle socket connections
+    io.on('connection', (socket) => {
+        console.log('A user connected');
+
+        // Event listener for the 'join' event
+        socket.on('join', (roomName) => {
+            // Join the specified room
+            socket.join(roomName);
+
+            // Emit the 'playerJoined' event to all clients in the room
+            io.to(roomName).emit('playerJoined', io.sockets.adapter.rooms[roomName].length);
+        });
+
+        // Event listener for the 'startGame' event
+        socket.on('startGame', () => {
+            // Emit the 'startGame' event to all clients in the room
+            const roomName = Object.keys(socket.rooms)[1]; // Get the room name
+            io.to(roomName).emit('startGame');
+        });
+
+        // Handle disconnections
+        socket.on('disconnect', () => {
+            console.log('A user disconnected');
+        });
+    });
 });
+
+
 // Start the server on port 3000
 const PORT = process.env.PORT || 3000;
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-let readyPlayerCount = 0;
 
-const pongNamespace = io.of('http://localhost:3000');
-pongNamespace.on('connection', (socket) => {
-        let room;
-
-        console.log('a user connected', socket.id);
-
-        socket.on('ready', () => {
-            room = 'room' + Math.floor(readyPlayerCount / 2);
-            socket.join(room);
-
-            console.log('Player ready', socket.id, room);
-
-            readyPlayerCount++;
-
-            if (readyPlayerCount % 2 === 0) {
-                pongNamespace.in(room).emit('startGame', socket.id);
-            }
-        });
-
-        socket.on('paddleMove', (paddleData) => {
-            socket.to(room).emit('paddleMove', paddleData);
-        });
-
-        socket.on('ballMove', (ballData) => {
-            socket.to(room).emit('ballMove', ballData);
-        });
-
-        socket.on('disconnect', (reason) => {
-            console.log(`Client ${socket.id} disconnected: ${reason}`);
-            socket.leave(room);
-        });
-    })
 
 
