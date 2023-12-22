@@ -286,8 +286,7 @@ document.getElementById('startButton').addEventListener('click', function () {
     }
 });
 
-
-
+// KEYBOARD CONTROLS
 document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
@@ -316,6 +315,8 @@ document.addEventListener('keyup', function (e) {
 // Add touch event listeners to the canvas
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchmove', handleTouchMove);
+
+// TOUCH / MOBILE CONTROLS
 
 // Variables to store touch positions
 let leftTouchY = null;
@@ -374,21 +375,6 @@ function handleTouchEnd(event) {
         }
     }
 }
-// REUSEABLE FUNCTIONS
-// fade with custum alpha, data params
-function fade(alpha, delta) {
-    alpha += delta;
-    if (alpha <= 0 || alpha >= 1) delta = -delta;
-    /// clear canvas, set alpha and re-draw image
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.globalAlpha = alpha;
-}
-
-// timer with params
-function Timer(func, time) {
-    return setTimeout(func, time)
-}
-
 function countdownTimer(seconds, callback) {
     let remainingTime = seconds;
     function updateTimer() {

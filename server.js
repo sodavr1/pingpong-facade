@@ -18,18 +18,19 @@ io.on('connection', (socket) => {
     console.log('User disconnected');
   });
     // Handle socket connections
-    io.on('connection', (socket) => {
+    io.sockets.on('connection', (socket) => {
         console.log('A user connected');
-
+        console.log('connected socket'+Object.keys(io.sockets.sockets));
         // Event listener for the 'join' event
         socket.on('joinRoom', (roomName) => {
             // Join the specified room
             socket.join(roomName);
-            console.log('roomename'+roomName)
-            // console.log(io.sockets.adapter.rooms);
+            console.log('room name'+roomName);
+            // let clients = io.sockets.clients(roomName)
+            // console.log('connected to room' +clients);
 
             // Emit the 'playerJoined' event to all clients in the room
-            // io.to(roomName).emit('playerJoined', io.sockets.adapter.rooms[roomName].length);
+            // socket.to(roomName).emit('playerJoined', socket.adapter.rooms[roomName].length);
         });
 
         // Event listener for the 'startGame' event
