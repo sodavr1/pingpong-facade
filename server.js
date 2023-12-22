@@ -22,12 +22,14 @@ io.on('connection', (socket) => {
         console.log('A user connected');
 
         // Event listener for the 'join' event
-        socket.on('join', (roomName) => {
+        socket.on('joinRoom', (roomName) => {
             // Join the specified room
             socket.join(roomName);
+            console.log('roomename'+roomName)
+            // console.log(io.sockets.adapter.rooms);
 
             // Emit the 'playerJoined' event to all clients in the room
-            io.to(roomName).emit('playerJoined', io.sockets.adapter.rooms[roomName].length);
+            // io.to(roomName).emit('playerJoined', io.sockets.adapter.rooms[roomName].length);
         });
 
         // Event listener for the 'startGame' event

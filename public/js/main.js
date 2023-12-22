@@ -4,14 +4,11 @@ const context = canvas.getContext('2d');
 let readyPlayerCount = 0;
 // socket io connection (CDN 4.7.2)
 const socket = io('http://localhost:3000/');
-
-
 socket.on("connect", () => {
   console.log(`connect ${socket.id}`);
+    joinRoom('pong');
 // Emit a message to the server
     socket.emit('chat message', 'Hello, server!');
-    socket.emit('ready');
-    joinRoom();
 });
 
 socket.on("connect_error", (err) => {
@@ -33,10 +30,12 @@ socket.on('ballMove', (ballData) => {
   });
 
 // Function to join a room
-// Function to join a room
-// Function to join a room
 function joinRoom(roomName) {
+    console.log('joinroom ran'+roomName);
     socket.emit('joinRoom', roomName);
+    readyPlayerCount++;
+    console.log('players:'+readyPlayerCount);
+    playersReady(readyPlayerCount)
 }
 
 // Function to start the game
@@ -46,23 +45,20 @@ function startGame() {
 }
 
 // Listen for the 'playersReady' event from the server
-socket.on('playersReady', (playersCount) => {
-    console.log(`Players ready: ${playersCount}`);
-
-    // Check if there are at least two players to start the game
-    if (playersCount >= 2) {
-        startGame();
-    }
-});
-// socket.on('startGame', (socketID) => {
-//     gameStarted = true;
-//     canvas.style.display = 'block';
-//     this.style.display = 'none';
-//     // socket.emit('ready');
-//     countdownTimer(timeLimit, endGameAnimation);
-//     requestAnimationFrame(loop);
+// socket.on('playersReady', (playersCount) => {
+//     console.log(`Players ready: ${playersCount}`);
+//     // Check if there are at least two players to start the game
+//     if (playersCount >= 2) {
+//         startGame();
+//     }
 // });
 
+function playersReady(readyPlayerCount){
+    console.log('player ready called');
+    if (readyPlayerCount >= 2) {
+        startGame();
+    }
+}
 // GAME GLOBALS VARS
 let gameUUID = crypto.randomUUID();
 let liveUUID = crypto.randomUUID();
@@ -277,12 +273,17 @@ function loop() {
 
 // START BUTTON AND LISTENERS
 document.getElementById('startButton').addEventListener('click', function () {
-    gameStarted = true;
-    canvas.style.display = 'block';
-    this.style.display = 'none';
-    socket.emit('ready');
-    countdownTimer(timeLimit, endGameAnimation);
-    requestAnimationFrame(loop);
+    if (readyPlayerCount===2) {
+        gameStarted = true;
+        canvas.style.display = 'block';
+        this.style.display = 'none';
+        socket.emit('ready');
+        countdownTimer(timeLimit, endGameAnimation);
+        requestAnimationFrame(loop);
+    }
+    else{
+        alert('Waiting for another player');
+    }
 });
 
 
