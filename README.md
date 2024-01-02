@@ -15,7 +15,7 @@ To be decided (For scoring)
 
 ### Local testing (to get round cors issues with module js types)
 npm install 
-npx start
+npm start
 
 ## Spec
 - index.html - Main Menu

@@ -4,13 +4,25 @@
 <head>
     <title>SCREEN D</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/queue.css">
 </head>
 
 <body>
-    <button id="startButton">Start Game</button>
-    <canvas width="318" height="652" id="game"></canvas>
-    <script src='../js/main.js' type = "module"></script>
+    <h3>SodaPong Game Queue</h3>
+    <label for="player 1">Player 1 Name:</label>
+    <input type="text" id="player1" name="player 1"></input>
+    <label for="player 2">Player 2 Name:</label>
+    <input type="text" id="player2" name="player 2"></input>
+    <button id="joinGame">Create New Game</button>
+    <table id = "gameQueue">
+        <tr>
+            <th>Game ID</th>
+            <th>Player 1</th>
+            <th>Player 2</th>
+            <th>Wait(Mins)</th>
+          </tr>
+    </table>
+    <script src='../js/queue.js' type = "module"></script>
 </body>
 
 </html>

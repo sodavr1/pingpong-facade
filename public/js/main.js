@@ -1,6 +1,42 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
-const socket = io();
+
+// socket io connection (CDN 4.7.2)
+const socket = io('http://localhost:3000/', {
+    withCredentials: true,
+    extraHeaders: {
+        "game-header": "gameheader"
+    }
+});
+socket.on("connect", () => {
+    joinRoom('pong');
+    // Emit a message to the server
+    socket.emit('chat message', 'Hello, server!');
+});
+
+socket.on("connect_error", (err) => {
+    alert(`connect_error due to ${err.message}`);
+});
+
+socket.on("disconnect", (reason) => {
+    alert(`disconnect due to ${reason}`);
+    socket.emit('userList', 'pong');
+    updateUserLength(users.length);
+});
+
+socket.on('userList', (users) => {
+    console.log('Users in the room:', users.length);
+    updateUserLength(users.length);
+});
+
+function updateUserLength(newUserLength){
+    users = newUserLength;
+}
+
+// Function to join a room
+function joinRoom(roomName) {
+    socket.emit('joinRoom', roomName);
+}
 
 // GAME GLOBALS VARS
 let gameID = 0; //temp for testing
@@ -13,10 +49,8 @@ const grid = 10;
 const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
-var paddleSpeed = 10;
-var ballSpeed = 2.2;
-var leftPlayerScore = 0;
-var rightPlayerScore = 0;
+let paddleSpeed = 10; let ballSpeed = 2.2; let leftPlayerScore = 0;
+let rightPlayerScore = 0;
 
 var gameStarted = false;
 let gameOver = false;
@@ -121,8 +155,8 @@ function resetGame(){
     leftPlayerScore = 0;
     rightPlayerScore = 0;
     // ball.resetting = false;
-    ballSpeed = 2.2;
-
+    ballSpeed = 2.2; paddleSpeed = 10;
+    ballSpeed = 2.2; leftPlayerScore = 0; rightPlayerScore = 0;
     gameOver = false;
     gameStarted = true;
     countdownTimer(timeLimit, endGameAnimation);
@@ -168,11 +202,9 @@ function loop() {
             if (ball.x < 0) {
                 rightPlayerScore++;
                 socket.emit('player2score', rightPlayerScore, liveUUID);
-                // updateLiveScoreData();
             } else {
                 leftPlayerScore++;
                 socket.emit('player1score', leftPlayerScore, liveUUID);
-                // updateLiveScoreData();
             }
             ball.resetting = true;
 
@@ -216,8 +248,6 @@ document.getElementById('startButton').addEventListener('click', function () {
     requestAnimationFrame(loop);
 });
 
-
-
 document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
@@ -240,16 +270,14 @@ document.addEventListener('keyup', function (e) {
         leftPaddle.dy = 0;
     }
 });
+
 function handleTouch(paddle, e) {
     const touch = e.touches[0];
     const newY = touch.clientY - canvas.getBoundingClientRect().top - paddle.height / 2;
-
     // Ensure the paddle stays within the canvas boundaries
     const maxY = canvas.height - paddle.height;
     const minY = 0;
-
     paddle.y = Math.max(minY, Math.min(newY, maxY));
-    // drawPaddle(ctx, paddle);
 }
 
 canvas.addEventListener("touchstart", function (e) {
