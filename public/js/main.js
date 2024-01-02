@@ -1,67 +1,59 @@
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
-let readyPlayerCount = 0;
 // socket io connection (CDN 4.7.2)
-const socket = io('http://localhost:3000/');
+const socket = io('http://localhost:3000/', {
+    withCredentials: true,
+    extraHeaders: {
+        "game-header": "gameheader"
+    }
+});
 socket.on("connect", () => {
-  console.log(`connect ${socket.id}`);
+    console.log(`connect ${socket.id}`);
     joinRoom('pong');
-// Emit a message to the server
+    // Emit a message to the server
     socket.emit('chat message', 'Hello, server!');
 });
 
 socket.on("connect_error", (err) => {
-  console.log(`connect_error due to ${err.message}`);
+    console.log(`connect_error due to ${err.message}`);
 });
 
 socket.on("disconnect", (reason) => {
-  console.log(`disconnect due to ${reason}`);
+    console.log(`disconnect due to ${reason}`);
+    socket.emit('userList', 'pong');
+    updateUserLength(users.length);
 });
 
 socket.on('paddleMove', (paddleData) => {
     // Toggle 1 into 0, and 0 into 1
     // const opponentPaddleIndex = 1 - paddleIndex;
     // paddleX[opponentPaddleIndex] = paddleData.xPosition;
-  });
+});
 
 socket.on('ballMove', (ballData) => {
     // ({ ballX, ballY, score } = ballData);
-  });
+});
+
+socket.on('userList', (users) => {
+    console.log('Users in the room:', users.length);
+    updateUserLength(users.length);
+});
+
+function updateUserLength(newUserLength){
+    users = newUserLength;
+}
 
 // Function to join a room
 function joinRoom(roomName) {
-    console.log('joinroom ran'+roomName);
+    console.log('joinroom ran' + roomName);
     socket.emit('joinRoom', roomName);
-    readyPlayerCount++;
-    console.log('players:'+readyPlayerCount);
-    playersReady(readyPlayerCount)
 }
 
-// Function to start the game
-function startGame() {
-    // Your game start logic goes here
-    console.log('Game started!');
-}
-
-// Listen for the 'playersReady' event from the server
-// socket.on('playersReady', (playersCount) => {
-//     console.log(`Players ready: ${playersCount}`);
-//     // Check if there are at least two players to start the game
-//     if (playersCount >= 2) {
-//         startGame();
-//     }
-// });
-
-function playersReady(readyPlayerCount){
-    console.log('player ready called');
-    if (readyPlayerCount >= 2) {
-        startGame();
-    }
-}
 // GAME GLOBALS VARS
 let gameUUID = crypto.randomUUID();
 let liveUUID = crypto.randomUUID();
+let users;
 
 let timeLimit = 20; //seconds
 
@@ -129,15 +121,14 @@ function endGameAnimation() {
     let startTime;
     const duration = 10000; // 10 seconds
     const winnerText = leftPlayerScore > rightPlayerScore ? 'Player 1' : 'Player 2';
-    const text = 'Winner\n'+winnerText;
+    const text = 'Winner\n' + winnerText;
 
-      function animate(currentTime) {
+    function animate(currentTime) {
         if (!startTime) {
-          startTime = currentTime;
+            startTime = currentTime;
         }
 
         const elapsed = currentTime - startTime;
-
         const alpha = Math.min(1, elapsed / duration);
 
         // Clear the canvas
@@ -157,30 +148,29 @@ function endGameAnimation() {
         const textX = canvas.width / 2;
         const textY = canvas.height / 4;
         context.fillText(text, textX, textY);
-          // Place text at the center
-          const textXScore = canvas.width / 2;
-          const textYScore = canvas.height / 3;
-          context.fillText('Score:' +leftPlayerScore > rightPlayerScore ? leftPlayerScore : rightPlayerScore, textXScore, textYScore);
+        // Place text at the center
+        const textXScore = canvas.width / 2;
+        const textYScore = canvas.height / 3;
+        context.fillText('Score:' + leftPlayerScore > rightPlayerScore ? leftPlayerScore : rightPlayerScore, textXScore, textYScore);
         if (elapsed < duration) {
-          requestAnimationFrame(animate);
+            requestAnimationFrame(animate);
         }
-        else{
+        else {
             console.log('trigger reset');
             gameOver = true;
             SendScoreData();
             resetGame();
         }
-      }
-      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
 }
 
-function resetGame(){
+function resetGame() {
     timeLimit = 20;
     leftPlayerScore = 0;
     rightPlayerScore = 0;
     // ball.resetting = false;
     ballSpeed = 2.2;
-
     gameOver = false;
     gameStarted = true;
     // set new random UUID game ID to prevent duplication 
@@ -230,13 +220,13 @@ function loop() {
                 socket.emit('player2score', rightPlayerScore, liveUUID);
                 liveUUID = crypto.randomUUID();
                 updateLiveScoreData();
-              
+
             } else {
                 leftPlayerScore++;
                 socket.emit('player1score', leftPlayerScore, liveUUID);
                 liveUUID = crypto.randomUUID();
                 updateLiveScoreData();
-            
+
             }
             ball.resetting = true;
 
@@ -273,7 +263,9 @@ function loop() {
 
 // START BUTTON AND LISTENERS
 document.getElementById('startButton').addEventListener('click', function () {
-    if (readyPlayerCount===2) {
+    // update user list to check if there are two players in room
+    socket.emit('userList', 'pong');
+    if (users === 2) {
         gameStarted = true;
         canvas.style.display = 'block';
         this.style.display = 'none';
@@ -281,18 +273,17 @@ document.getElementById('startButton').addEventListener('click', function () {
         countdownTimer(timeLimit, endGameAnimation);
         requestAnimationFrame(loop);
     }
-    else{
+    else {
         alert('Waiting for another player');
     }
 });
 
-// KEYBOARD CONTROLS
 document.addEventListener('keydown', function (e) {
     if (e.which === 38) {
         rightPaddle.dy = -paddleSpeed;
         socket.emit('paddleMove', {
             // xPosition: paddleX[paddleIndex],
-          });
+        });
     } else if (e.which === 40) {
         rightPaddle.dy = paddleSpeed;
     }
@@ -315,8 +306,6 @@ document.addEventListener('keyup', function (e) {
 // Add touch event listeners to the canvas
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchmove', handleTouchMove);
-
-// TOUCH / MOBILE CONTROLS
 
 // Variables to store touch positions
 let leftTouchY = null;
@@ -375,6 +364,21 @@ function handleTouchEnd(event) {
         }
     }
 }
+// REUSEABLE FUNCTIONS
+// fade with custum alpha, data params
+function fade(alpha, delta) {
+    alpha += delta;
+    if (alpha <= 0 || alpha >= 1) delta = -delta;
+    /// clear canvas, set alpha and re-draw image
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.globalAlpha = alpha;
+}
+
+// timer with params
+function Timer(func, time) {
+    return setTimeout(func, time)
+}
+
 function countdownTimer(seconds, callback) {
     let remainingTime = seconds;
     function updateTimer() {
