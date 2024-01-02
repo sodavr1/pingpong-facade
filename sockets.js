@@ -4,17 +4,11 @@ function listen(io) {
     const pongNamespace = io.of('http://localhost:3000/');
     pongNamespace.on('connection', (socket) => {
         let room;
-
-        console.log('a user connected', socket.id);
-
         socket.on('ready', () => {
             room = 'room' + Math.floor(readyPlayerCount / 2);
             socket.join(room);
-
             console.log('Player ready', socket.id, room);
-
             readyPlayerCount++;
-
             if (readyPlayerCount % 2 === 0) {
                 pongNamespace.in(room).emit('startGame', socket.id);
             }

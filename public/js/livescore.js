@@ -2,7 +2,7 @@
 let liveScorePlayer1; let liveScorePlayer2;
 let liveScores = [];
 
-setInterval(function () {getScoreData();}, 1000);
+setInterval(function () {getScoreData();}, 20000);
 
 
 async function getScoreData() {
