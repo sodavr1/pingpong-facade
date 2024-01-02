@@ -3,8 +3,6 @@ let liveScorePlayer1; let liveScorePlayer2;
 let liveScores = [];
 
 setInterval(function () {getScoreData();}, 20000);
-
-
 async function getScoreData() {
         const response = await fetch('http://localhost:3001/livescore');
         liveScores = await response.json();
@@ -37,7 +35,5 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
-
-export default {getScoreData}
 
 

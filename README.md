@@ -1,5 +1,6 @@
 ### PROOF OF CONCEPT SODA PONG FACADE PROJECT 👋
-Project for projectable html canvases using Symptholight to allow for playing videos games via the MMU Soda displays
+Project for projectable html canvases using Symptholight to allow for playing videos games 
+via the MMU Soda displays
 
 ![image](pingpong.png)
 
@@ -7,27 +8,28 @@ Project for projectable html canvases using Symptholight to allow for playing vi
 html / css / javascript
 
 ## Backend
-To be decided (For scoring)
+Node / socket.io / express
 
 ### Play Links
 
-- Main Menu [Main Menu](public/index.html)
+- [Main Menu](public/index.html)
 
-### Local testing (to get round cors issues with module js types)
+### Local testing
 npm install 
-npx start
+npm start
 
 ## Spec
 - index.html - Main Menu
-- /Screens - Screens with setup
+- Screens - Screens with setup
 - score.html - screen ?
 
-### screens 
-- screen A - Prev game score
-- screen B - Title 
-- Screen C - Live score
-- Screen D - Main Game
-- Screen E - MainGame
+### screens (Client Side)
+- screen A - Prev game score (CSS / HTML / JS)
+- screen B - Title (CSS / HTML)
+- Screen C - Live score (HTML / CSS / JS)
+- Screen D - Queue (HTML / CSS / JS)
+- Screen E - MainGame (HTML / CSS / JS)
 
-###  Issue log 
-- animation breaks on end game - main game loop doesn't finish
+###  Issue log
+- speed bug 
+- socket.io - TO TEST 

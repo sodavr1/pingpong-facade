@@ -51,24 +51,22 @@ function joinRoom(roomName) {
 }
 
 // GAME GLOBALS VARS
-let gameUUID = crypto.randomUUID();
-let liveUUID = crypto.randomUUID();
+let gameUUID = crypto.randomUUID(); let liveUUID = crypto.randomUUID();
 let users;
 
 let timeLimit = 20; //seconds
-
 const grid = 10;
 const paddleHeight = grid * 8; // 80
 const maxPaddleY = canvas.height - grid - paddleHeight;
 
-var paddleSpeed = 10;
-var ballSpeed = 2.2;
-var leftPlayerScore = 0;
-var rightPlayerScore = 0;
+let paddleSpeed = 10;
+let ballSpeed = 2.2;
+let leftPlayerScore = 0;
+let rightPlayerScore = 0;
 
-var gameStarted = false;
+let gameStarted = false;
 let gameOver = false;
-const maxScore = 10;
+
 
 // DRAWING CONTROLS 
 const leftPaddle = {
@@ -303,22 +301,20 @@ document.addEventListener('keyup', function (e) {
         leftPaddle.dy = 0;
     }
 });
+
 // Add touch event listeners to the canvas
 canvas.addEventListener('touchstart', handleTouchStart);
 canvas.addEventListener('touchmove', handleTouchMove);
 
 // Variables to store touch positions
-let leftTouchY = null;
-let rightTouchY = null;
+let leftTouchY = null; let rightTouchY = null;
 
 // Handle touch start event
 function handleTouchStart(event) {
     event.preventDefault();
-
     // Iterate through all touches
     for (let i = 0; i < event.touches.length; i++) {
         const touch = event.touches[i];
-
         // Check if touch is on the left or right side of the canvas
         if (touch.clientX < canvas.width / 2) {
             leftTouchY = touch.clientY;
@@ -331,7 +327,6 @@ function handleTouchStart(event) {
 // Handle touch move event
 function handleTouchMove(event) {
     event.preventDefault();
-
     // Iterate through all touches
     for (let i = 0; i < event.touches.length; i++) {
         const touch = event.touches[i];
@@ -363,20 +358,6 @@ function handleTouchEnd(event) {
             rightTouchY = null;
         }
     }
-}
-// REUSEABLE FUNCTIONS
-// fade with custum alpha, data params
-function fade(alpha, delta) {
-    alpha += delta;
-    if (alpha <= 0 || alpha >= 1) delta = -delta;
-    /// clear canvas, set alpha and re-draw image
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.globalAlpha = alpha;
-}
-
-// timer with params
-function Timer(func, time) {
-    return setTimeout(func, time)
 }
 
 function countdownTimer(seconds, callback) {

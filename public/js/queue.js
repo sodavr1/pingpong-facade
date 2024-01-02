@@ -118,25 +118,3 @@ function handleTouchEnd(event) {
     }
 }
 
-
-// timer with params
-function Timer(func, time) {
-    return setTimeout(func, time)
-}
-
-function countdownTimer(seconds, callback) {
-    let remainingTime = seconds;
-    function updateTimer() {
-        if (remainingTime > 0) {
-            console.log(`${remainingTime} seconds remaining`);
-            remainingTime--;
-            setTimeout(updateTimer, 1000); // Update every 1 second (1000 milliseconds)
-        } else {
-            if (callback && typeof callback === "function") {
-                callback(); // Execute the callback function when the timer reaches zero
-            }
-        }
-    }
-    updateTimer(); // Start the countdown
-}
-
