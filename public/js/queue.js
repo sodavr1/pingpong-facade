@@ -12,19 +12,17 @@ function waitTimings(){
     queueTimer++;
     console.log(convert(queueTimer), convert(queueTimer));
     for (let i = 0, row; row = waitTable.rows[i]; i++) {
-        console.log(row);
           // if global timer === 0 rows.cells[3] WAIT TIME
         if (convert(queueTimer) === convert(row.cells[3])){
             console.log(queueTimer,Math.floor(row.cells[3] / 60));
             removeRow(row[i].id);
         }
-        console.log(row.cells[3]);
      }
 }
 
 // Queue timers
 // check wait queue
-setInterval(function () {waitTimings()}, 1000);
+setInterval(function () {waitTimings()}, 10000);
 
 // START BUTTON AND LISTENERS
 document.getElementById('joinGame').addEventListener('click', function () {

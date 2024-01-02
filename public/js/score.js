@@ -10,8 +10,6 @@ async function getScoreData() {
   prevScorePlayer2 = scores[scores.length-1].player2;
   // draw call after prev score fetched
   drawScores();
-  console.log(scores);
-  console.log(prevScorePlayer1, prevScorePlayer2)
 }
 
 const canvas = document.getElementById('score');

@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e69e69d1-434d-4b23-b9f8-17b658989d76" name="Changes" comment="- working on join room">
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="socket" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="9eb49428-bc6f-47b9-b671-d1ccc41f57d6" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="74968382-5f24-4103-babc-b043b4f2f28f" />
+        <option name="url" value="https://github.com/sodavr1/sodavr1.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2ZGfl07Kq6r4Z0ksGUNuZQ8A2RQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public/css" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e69e69d1-434d-4b23-b9f8-17b658989d76" name="Changes" comment="" />
+      <created>1702053484154</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702053484154</updated>
+      <workItem from="1702053487958" duration="3176000" />
+      <workItem from="1702285587673" duration="7618000" />
+      <workItem from="1702544476111" duration="192000" />
+      <workItem from="1702544686421" duration="15414000" />
+      <workItem from="1702636963346" duration="14396000" />
+      <workItem from="1702894911558" duration="28250000" />
+      <workItem from="1703157317994" duration="7473000" />
+      <workItem from="1703177023754" duration="335000" />
+      <workItem from="1703240612034" duration="7382000" />
+    </task>
+    <task id="LOCAL-00001" summary="# init commmit from chris on mac / webstrom&#10;- rotate y 180&#10;- created base html">
+      <option name="closed" value="true" />
+      <created>1702054051435</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1702054051435</updated>
+    </task>
+    <task id="LOCAL-00002" summary="# updated readme.md &#10;- removed unversioned stuff">
+      <option name="closed" value="true" />
+      <created>1702056164382</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702056164382</updated>
+    </task>
+    <task id="LOCAL-00003" summary="# added aaron's code for pong&#10;- seperated out css and js &#10;- removed ball and player&#10;- all contained in main now">
+      <option name="closed" value="true" />
+      <created>1702286665597</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702286665597</updated>
+    </task>
+    <task id="LOCAL-00004" summary="# made canvas vertical">
+      <option name="closed" value="true" />
+      <created>1702289696760</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702289696760</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- try and fix glitch with canvas height">
+      <option name="closed" value="true" />
+      <created>1702298295464</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702298295464</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- why">
+      <option name="closed" value="true" />
+      <created>1702298524849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1702298524849</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- customising to fit facade section &#10;#TO DO&#10;-Fix text">
+      <option name="closed" value="true" />
+      <created>1702300338979</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1702300338979</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- restructuring folder structure&#10;- updated README.md&#10;# html mods&#10;- renaming html files for screens">
+      <option name="closed" value="true" />
+      <created>1702384676998</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1702384676998</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- title screenB.html">
+      <option name="closed" value="true" />
+      <created>1702548866429</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1702548866429</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- title mods &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702551143848</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702551143848</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- title mods &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702551380055</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1702551380055</updated>
+    </task>
+    <task id="LOCAL-00012" summary="- title mods &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702552575415</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1702552575415</updated>
+    </task>
+    <task id="LOCAL-00013" summary="- draft fetch POST request for livescore.js&#10;- updated README.md">
+      <option name="closed" value="true" />
+      <created>1702557161048</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1702557161048</updated>
+    </task>
+    <task id="LOCAL-00014" summary="- modded title page css &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702562509803</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1702562509803</updated>
+    </task>
+    <task id="LOCAL-00015" summary="- modded title page css &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702562651378</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1702562651378</updated>
+    </task>
+    <task id="LOCAL-00016" summary="- modded title page css &#10;- title.css">
+      <option name="closed" value="true" />
+      <created>1702563085448</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1702563085448</updated>
+    </task>
+    <task id="LOCAL-00017" summary="- main.css &#10;- score.js&#10;- livescore.js &#10;- added fonts">
+      <option name="closed" value="true" />
+      <created>1702564255534</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1702564255534</updated>
+    </task>
+    <task id="LOCAL-00018" summary="- main.css &#10;- score.js&#10;- livescore.js &#10;- added fonts">
+      <option name="closed" value="true" />
+      <created>1702564669616</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1702564669616</updated>
+    </task>
+    <task id="LOCAL-00019" summary="- font fixing&#10;- making paddles thicker&#10;- winner fix">
+      <option name="closed" value="true" />
+      <created>1702641099664</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1702641099665</updated>
+    </task>
+    <task id="LOCAL-00020" summary="- font fixing&#10;- time limit instead of max score&#10;- tidying&#10;- added UUID for ID's">
+      <option name="closed" value="true" />
+      <created>1702646628492</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1702646628492</updated>
+    </task>
+    <task id="LOCAL-00021" summary="- time limit 20 for testing&#10;- text score&#10;- started added mobile touch support -WIP">
+      <option name="closed" value="true" />
+      <created>1702652694380</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1702652694380</updated>
+    </task>
+    <task id="LOCAL-00022" summary="-  working on timing">
+      <option name="closed" value="true" />
+      <created>1702656535998</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1702656535998</updated>
+    </task>
+    <task id="LOCAL-00023" summary="-  media queries for mobile / tablet&#10;- bug fixing in loop&#10;- working socket emit events for scoring (wip)">
+      <option name="closed" value="true" />
+      <created>1702904000358</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1702904000358</updated>
+    </task>
+    <task id="LOCAL-00024" summary="- score system fetch scores from prev game&#10;- some refactoring in main&#10;- updated socket cdn (wip)">
+      <option name="closed" value="true" />
+      <created>1702913920038</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1702913920038</updated>
+    </task>
+    <task id="LOCAL-00025" summary="- added working touch controls">
+      <option name="closed" value="true" />
+      <created>1702919791852</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1702919791852</updated>
+    </task>
+    <task id="LOCAL-00026" summary="- working on fixing socket.io  polling error &#10;- in progress">
+      <option name="closed" value="true" />
+      <created>1702996203413</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1702996203413</updated>
+    </task>
+    <task id="LOCAL-00027" summary="- prototying code for socket.io intergration&#10;- still have issue with 404 /socket.io failing to fix">
+      <option name="closed" value="true" />
+      <created>1703006511102</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1703006511102</updated>
+    </task>
+    <task id="LOCAL-00028" summary="- prototying code for socket.io intergration">
+      <option name="closed" value="true" />
+      <created>1703177100491</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1703177100491</updated>
+    </task>
+    <task id="LOCAL-00029" summary="- prototying code for socket.io intergration">
+      <option name="closed" value="true" />
+      <created>1703177178328</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1703177178329</updated>
+    </task>
+    <task id="LOCAL-00030" summary="- progress on join room&#10;- test">
+      <option name="closed" value="true" />
+      <created>1703246473281</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1703246473281</updated>
+    </task>
+    <task id="LOCAL-00031" summary="- working on join room">
+      <option name="closed" value="true" />
+      <created>1703252798334</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1703252798334</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="# init commmit from chris on mac / webstrom&#10;- rotate y 180&#10;- created base html" />
+    <MESSAGE value="# updated readme.md &#10;- removed unversioned stuff" />
+    <MESSAGE value="# added aaron's code for pong&#10;- seperated out css and js &#10;- removed ball and player&#10;- all contained in main now" />
+    <MESSAGE value="# made canvas vertical" />
+    <MESSAGE value="- try and fix glitch with canvas height" />
+    <MESSAGE value="- why" />
+    <MESSAGE value="- customising to fit facade section &#10;#TO DO&#10;-Fix text" />
+    <MESSAGE value="- restructuring folder structure&#10;- updated README.md&#10;# html mods&#10;- renaming html files for screens" />
+    <MESSAGE value="- title screenB.html" />
+    <MESSAGE value="- title mods &#10;- title.css" />
+    <MESSAGE value="- draft fetch POST request for livescore.js&#10;- updated README.md" />
+    <MESSAGE value="- modded title page css &#10;- title.css" />
+    <MESSAGE value="- main.css &#10;- score.js&#10;- livescore.js &#10;- added fonts" />
+    <MESSAGE value="- font fixing&#10;- making paddles thicker&#10;- winner fix" />
+    <MESSAGE value="- font fixing&#10;- time limit instead of max score&#10;- tidying&#10;- added UUID for ID's" />
+    <MESSAGE value="- time limit 20 for testing&#10;- text score&#10;- started added mobile touch support -WIP" />
+    <MESSAGE value="-  working on timing" />
+    <MESSAGE value="-  media queries for mobile / tablet&#10;- bug fixing in loop&#10;- working socket emit events for scoring (wip)" />
+    <MESSAGE value="- score system fetch scores from prev game&#10;- some refactoring in main&#10;- updated socket cdn (wip)" />
+    <MESSAGE value="- added working touch controls" />
+    <MESSAGE value="- working on fixing socket.io  polling error &#10;- in progress" />
+    <MESSAGE value="- prototying code for socket.io intergration&#10;- still have issue with 404 /socket.io failing to fix" />
+    <MESSAGE value="- prototying code for socket.io intergration" />
+    <MESSAGE value="- progress on join room&#10;- test" />
+    <MESSAGE value="- working on join room" />
+    <option name="LAST_COMMIT_MESSAGE" value="- working on join room" />
+  </component>
+</project>
