@@ -6,7 +6,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "ws://localhost:3001/scores",
     allowedHeaders: ["game-header"],
     credentials: true
   }

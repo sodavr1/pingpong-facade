@@ -2,7 +2,7 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 
 // socket io connection (CDN 4.7.2)
-const socket = io('http://localhost:3000/', {
+const socket = io('ws://localhost:3000/', {
     withCredentials: true,
     extraHeaders: {
         "game-header": "gameheader"
@@ -380,7 +380,7 @@ function countdownTimer(seconds, callback) {
 // update live score
 function updateLiveScoreData() {
     if (!gameOver) {
-        fetch("http://localhost:3001/livescore", {
+        fetch("localhost:3001/livescore", {
             method: "POST",
             body: JSON.stringify({
                 // MAKE THIS A  UUID LATER
@@ -401,7 +401,7 @@ function updateLiveScoreData() {
 function SendScoreData() {
     if (gameOver) {
         console.log(gameUUID);
-        fetch("http://localhost:3001/scores", {
+        fetch("localhost:3001/scores", {
             method: "POST",
             body: JSON.stringify({
                 id: gameUUID, // MAKE THIS A  UUID LATER
