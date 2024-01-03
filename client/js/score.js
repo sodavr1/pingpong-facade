@@ -4,7 +4,7 @@ let prevScorePlayer1; let prevScorePlayer2;
 // Fetch score data from prev game
 getScoreData();
 async function getScoreData() {
-  const response = await fetch("ws://localhost:3001/scores");
+  const response = await fetch("localhost:3001/scores");
   scores = await response.json();
   prevScorePlayer1 = scores[scores.length-1].player1;
   prevScorePlayer2 = scores[scores.length-1].player2;
