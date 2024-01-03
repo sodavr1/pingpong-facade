@@ -1,0 +1,10 @@
+services:
+  - name: server
+    envVars:
+      - key: PORT
+        value: "3001"
+    buildCommand: npm install && npm run build  # Adjust the build command as needed
+    startCommand: npm start
+  - name: client
+    buildCommand: npm install && npm run build  # Adjust the build command as needed
+    startCommand: npm start

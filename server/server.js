@@ -11,7 +11,6 @@ const io = new Server(httpServer, {
     credentials: true
   }
 });
-
 // Serve static files from the 'public' folder
 app.use(express.static("public"));
   // Handle socket connections

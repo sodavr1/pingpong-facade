@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e69e69d1-434d-4b23-b9f8-17b658989d76" name="Changes" comment="tidying up code smells&#10;- console log&#10;- redudent code">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_15_12_2023__10_43__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/livescore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/livescore.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/queue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/screens/screenD.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenD.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/screens/screenE.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenE.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +104,7 @@
       <workItem from="1703157317994" duration="7473000" />
       <workItem from="1703177023754" duration="335000" />
       <workItem from="1703240612034" duration="7382000" />
-      <workItem from="1704196830121" duration="2746000" />
+      <workItem from="1704196830121" duration="3603000" />
     </task>
     <task id="LOCAL-00001" summary="# init commmit from chris on mac / webstrom&#10;- rotate y 180&#10;- created base html">
       <option name="closed" value="true" />
@@ -373,7 +362,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704197103504</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="tidying up code smells&#10;- console log&#10;- redudent code">
+      <option name="closed" value="true" />
+      <created>1704206217359</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1704206217359</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
