@@ -17,22 +17,18 @@ app.use(express.static("public"));
   // Handle socket connections
   io.on('connection', (socket) => {
     console.log('A user connected');
-
     // Event listener for the 'join' event
     socket.on('joinRoom', (roomName) => {
       // Join the specified room
       socket.join(roomName);
-      console.log('roomename' + roomName)
       io.to(roomName).emit('userList', getUsersInRoom(roomName));
     });
-
     // Event listener for the 'startGame' event
     socket.on('startGame', () => {
       // Emit the 'startGame' event to all clients in the room
       const roomName = Object.keys(socket.rooms)[1]; // Get the room name
       io.to(roomName).emit('startGame');
     });
-
     // Handle disconnections
     socket.on('disconnect', () => {
       console.log('A user disconnected');
@@ -48,8 +44,8 @@ function getUsersInRoom(room) {
   }
 }
 
-// Start the server on port 3000
-const PORT = process.env.PORT || 3000;
+// Start the server on port 3001
+const PORT = process.env.PORT || 3001;
 httpServer.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
