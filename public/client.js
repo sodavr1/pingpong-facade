@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 const socket = io(`ws://localhost:${port}`);
 
 socket.emit("chat message", "Hello, server!");

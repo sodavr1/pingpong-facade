@@ -12,7 +12,7 @@ Node / socket.io / express
 
 ### Play Links
 
-- [Main Menu](client/index.html)
+- [Main Menu](public/index.html)
 
 ### Local testing
 npm install 

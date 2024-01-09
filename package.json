@@ -17,13 +17,13 @@
   "name": "sodapong",
   "description": "Project for projectable html canvases using Symptholight to allow for playing videos games via the MMU Soda displays",
   "version": "1.0.0",
-  "main": "server/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "concurrently --kill-others  \"npm run client\" \"npm run server\" \"npm run db\"",
-    "server": "node server/server.js --port 3001",
-    "client": "node client/client.js --port 3000",
-    "db": "npx json-server --watch db.json --port 3001"
+    "start": "concurrently --kill-others  \"npm run db\" \"npm run client\" \"npm run server\"   ",
+    "server": "node server.js --port 3001",
+    "client": "node public/client.js --port 3000",
+    "db": "npx json-server --watch db.json --port 3000"
   },
   "repository": {
     "type": "git",

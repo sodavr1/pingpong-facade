@@ -4,9 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e69e69d1-434d-4b23-b9f8-17b658989d76" name="Changes" comment="tidying up code smells&#10;- console log&#10;- redudent code">
+    <list default="true" id="e69e69d1-434d-4b23-b9f8-17b658989d76" name="Changes" comment="- still getting connect error due to xhr poll error&#10;- checking prototcols on server requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/SerifaBQ-Regular.otf" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/SerifaBQ-Regular.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/mainmenu.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/mainmenu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/queue.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/queue.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/css/title.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/title.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/images/external_night.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/external_night.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/js/livescore.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/livescore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/js/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/queue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/js/score.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/score.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/screens/screenA.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/screens/screenB.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenB.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/screens/screenC.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenC.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/screens/screenD.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenD.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/screens/screenE.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/screens/screenE.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +103,8 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/client" />
+      <recent name="$PROJECT_DIR$/server" />
       <recent name="$PROJECT_DIR$/public/css" />
     </key>
   </component>
@@ -105,6 +126,9 @@
       <workItem from="1703177023754" duration="335000" />
       <workItem from="1703240612034" duration="7382000" />
       <workItem from="1704196830121" duration="3603000" />
+      <workItem from="1704275662178" duration="2248000" />
+      <workItem from="1704289673506" duration="2617000" />
+      <workItem from="1704797266761" duration="1754000" />
     </task>
     <task id="LOCAL-00001" summary="# init commmit from chris on mac / webstrom&#10;- rotate y 180&#10;- created base html">
       <option name="closed" value="true" />
@@ -370,7 +394,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704206217359</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="server.js &#10;- port was set to 3000. Server is on port 3001&#10;- db.json  - cleared (Was huge)&#10;- Probably need to auto delete livescore records every day otherwise it will create issues in live db">
+      <option name="closed" value="true" />
+      <created>1704276318945</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1704276318945</updated>
+    </task>
+    <task id="LOCAL-00035" summary="- seperated client / server code&#10;- added yaml file for deployment testing">
+      <option name="closed" value="true" />
+      <created>1704277671124</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1704277671124</updated>
+    </task>
+    <task id="LOCAL-00036" summary="- still getting connect error due to xhr poll error&#10;- checking prototcols on server requests">
+      <option name="closed" value="true" />
+      <created>1704294022054</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1704294022055</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,9 +463,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="# updated readme.md &#10;- removed unversioned stuff" />
-    <MESSAGE value="# added aaron's code for pong&#10;- seperated out css and js &#10;- removed ball and player&#10;- all contained in main now" />
-    <MESSAGE value="# made canvas vertical" />
     <MESSAGE value="- try and fix glitch with canvas height" />
     <MESSAGE value="- why" />
     <MESSAGE value="- customising to fit facade section &#10;#TO DO&#10;-Fix text" />
@@ -440,6 +485,9 @@
     <MESSAGE value="- progress on join room&#10;- test" />
     <MESSAGE value="- working on join room" />
     <MESSAGE value="tidying up code smells&#10;- console log&#10;- redudent code" />
-    <option name="LAST_COMMIT_MESSAGE" value="tidying up code smells&#10;- console log&#10;- redudent code" />
+    <MESSAGE value="server.js &#10;- port was set to 3000. Server is on port 3001&#10;- db.json  - cleared (Was huge)&#10;- Probably need to auto delete livescore records every day otherwise it will create issues in live db" />
+    <MESSAGE value="- seperated client / server code&#10;- added yaml file for deployment testing" />
+    <MESSAGE value="- still getting connect error due to xhr poll error&#10;- checking prototcols on server requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="- still getting connect error due to xhr poll error&#10;- checking prototcols on server requests" />
   </component>
 </project>

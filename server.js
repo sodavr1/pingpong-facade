@@ -6,7 +6,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: "localhost:3001",
+    origin: "localhost:3000",
     allowedHeaders: ["game-header"],
     credentials: true
   }
@@ -44,7 +44,7 @@ function getUsersInRoom(room) {
 }
 
 // Start the server on port 3001
-const PORT = process.env.PORT || 3001;
-httpServer.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+const PORT_SERVER = process.env.PORT_SERVER || 3001;
+httpServer.listen(PORT_SERVER, () => {
+  console.log(`Server is running on port ${PORT_SERVER}`);
 });
