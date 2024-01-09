@@ -1,4 +1,462 @@
 {
-  "scores": [],
-  "livescore": []
+  "scores": [
+    {
+      "id": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 11,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 25,
+      "winner": "PLAYER2"
+    },
+    {
+      "id": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 32,
+      "winner": "PLAYER2"
+    }
+  ],
+  "livescore": [
+    {
+      "id": "6fac5549-2e78-4d6a-ab7a-6e0f3c29a096",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 1,
+      "player2": 0
+    },
+    {
+      "id": "94ffd0fc-be4f-46c2-96b6-1d91ecec57b5",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 2,
+      "player2": 0
+    },
+    {
+      "id": "c069d522-cd20-42c1-9072-f224c9a6e4e3",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 0
+    },
+    {
+      "id": "165e06eb-e8fe-4173-97f7-4da2d6f1ae86",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 1
+    },
+    {
+      "id": "14ab4d93-ceec-4fc4-8329-205c024af7f9",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 2
+    },
+    {
+      "id": "1db9f277-5d80-42d0-aa10-140b1a518c63",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 3
+    },
+    {
+      "id": "f6fc4866-4a1e-4ff1-8f9c-512239e51dc1",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 4
+    },
+    {
+      "id": "319c3824-1990-4670-8117-bfb40baeee6c",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 5
+    },
+    {
+      "id": "fb636cab-f5f6-4077-9e7f-d0f698753b7e",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 6
+    },
+    {
+      "id": "d25b3c9f-9153-4068-8498-13b66cbcedd0",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 7
+    },
+    {
+      "id": "6d887b3c-611b-46e6-8b1b-b8cec8551bb3",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 8
+    },
+    {
+      "id": "c6b68160-27c9-4e30-b9aa-c49d578cbb0e",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 9
+    },
+    {
+      "id": "82d9f6d7-94ae-43de-a331-7a450ec62770",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 10
+    },
+    {
+      "id": "7c2bcac0-b169-44e5-ad5b-1bfa6cc447d4",
+      "gameid": "9f409d03-b4cf-4ec9-b40e-5ed74e6ecf48",
+      "player1": 3,
+      "player2": 11
+    },
+    {
+      "id": "c906cce9-b02a-4184-ae64-1085866b60a0",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 1
+    },
+    {
+      "id": "842ace85-e1be-4467-b2ad-5eead0b8818c",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 2
+    },
+    {
+      "id": "7e520059-74a4-435a-bbea-58da5b8ebede",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 3
+    },
+    {
+      "id": "a549cd6a-2eee-4af3-86b4-2dba73966a24",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 4
+    },
+    {
+      "id": "41aadb7b-3d75-4491-b1d8-263b9f58b1a6",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 5
+    },
+    {
+      "id": "017aecca-1c3a-450c-a84a-9469c2a750e3",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 6
+    },
+    {
+      "id": "c735e0a2-5af9-44f1-a148-acfcb9e33f29",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 7
+    },
+    {
+      "id": "ef5a4e2d-7f80-4111-a07c-2f3df607d91b",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 8
+    },
+    {
+      "id": "d3acb1df-64d6-451e-b496-99cee26551c2",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 9
+    },
+    {
+      "id": "4c0a68f3-dee5-4b3b-93d5-24e9d3d5e3db",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 10
+    },
+    {
+      "id": "25ac8004-7090-4af1-b734-0322d8e99114",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 11
+    },
+    {
+      "id": "5c3e0145-1eec-4fbf-b706-0e7309f904ee",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 12
+    },
+    {
+      "id": "d52b1efd-48c5-47f4-adaa-bafe1f40dc5d",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 13
+    },
+    {
+      "id": "40b7cc13-ed05-4e42-9248-5fcd4372bfc2",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 14
+    },
+    {
+      "id": "466b1eee-260e-451b-b5f3-2b4bb1c78929",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 15
+    },
+    {
+      "id": "eba7f070-5482-4989-975e-dd4a972ee2cc",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 16
+    },
+    {
+      "id": "74c8efff-c3f7-499e-858b-e4a7c4c73afb",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 17
+    },
+    {
+      "id": "e69da73e-2093-482a-8c41-40d6dff0dc41",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 18
+    },
+    {
+      "id": "1925f8d5-34d1-481c-baf9-f1237b4cb73b",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 19
+    },
+    {
+      "id": "ff5a35f3-8c58-48ee-986a-b32c83f3dd60",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 20
+    },
+    {
+      "id": "96c3149e-f441-4a65-8ec0-2de2ffdf8014",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 21
+    },
+    {
+      "id": "91d0a220-a9db-4ab9-9c9b-b579c3576a3e",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 22
+    },
+    {
+      "id": "c79162d4-c520-48a0-83e2-8d4bd023c69b",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 23
+    },
+    {
+      "id": "856abe73-b855-42cd-b975-c7b191312618",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 24
+    },
+    {
+      "id": "b7d11574-cf79-4aa0-8a7b-15c735ebbf88",
+      "gameid": "2308bbe8-68bb-4b14-a187-3beb5d8aab52",
+      "player1": 0,
+      "player2": 25
+    },
+    {
+      "id": "48010d6e-55fe-403d-bc4f-43682048615b",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 1
+    },
+    {
+      "id": "9c8c7c41-726a-40fa-9027-044a23d15344",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 2
+    },
+    {
+      "id": "70e91596-3985-4287-a554-a93188730660",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 3
+    },
+    {
+      "id": "1779332d-c8c8-43f8-8945-db2c6f12219e",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 4
+    },
+    {
+      "id": "cfbc5249-9388-45df-a1ec-3fca655f505a",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 5
+    },
+    {
+      "id": "41eeb353-2a34-4ef3-9a54-64841544bdad",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 6
+    },
+    {
+      "id": "a7880b83-eb65-403a-bb70-996560795c1c",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 7
+    },
+    {
+      "id": "c599ee90-e860-499e-ba21-5ffea7e7a17e",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 8
+    },
+    {
+      "id": "62895da7-2da2-4410-9091-6fa22b0da2eb",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 9
+    },
+    {
+      "id": "dc76e4d6-6e42-4b1c-a150-e826c8165052",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 10
+    },
+    {
+      "id": "a04acaec-3d5d-44e0-954b-542cdfb6ce33",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 11
+    },
+    {
+      "id": "588cc407-8570-4e74-9a01-ac4c4defe3ea",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 12
+    },
+    {
+      "id": "1d4dd9a3-9e77-4e41-9f83-6a2a1cd691ab",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 13
+    },
+    {
+      "id": "8fd690e9-aae3-4c30-900d-9fbaf51e2324",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 14
+    },
+    {
+      "id": "3c16522c-5475-48fa-8d36-91867a4201d3",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 15
+    },
+    {
+      "id": "130f1fde-7b52-4157-91fd-6c444de20f97",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 16
+    },
+    {
+      "id": "1b5fb656-9546-47a8-bf47-950a38e6d66e",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 17
+    },
+    {
+      "id": "c1f0a1e6-7312-4856-9ebb-9f4cf938f687",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 18
+    },
+    {
+      "id": "d542ee41-5bc5-4063-a4f2-9c035ed17930",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 19
+    },
+    {
+      "id": "a4a265fd-d4ac-45b4-9c6d-d63b42807ad0",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 20
+    },
+    {
+      "id": "98bb4a9a-5056-4f80-b6af-8fd02293ed84",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 21
+    },
+    {
+      "id": "e9c50dc7-ee76-438c-be66-af9e1dee9a6a",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 22
+    },
+    {
+      "id": "d10410cb-82eb-42a3-8e19-32e0bc0f2463",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 23
+    },
+    {
+      "id": "1a708f59-b99b-495f-95ae-cf33a1da9f70",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 24
+    },
+    {
+      "id": "76ec51db-3f33-40cb-b294-dccd0c0a80ac",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 25
+    },
+    {
+      "id": "b8e9fe44-cbc1-430d-80e7-25a2c37eee0a",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 26
+    },
+    {
+      "id": "7cd36224-63f0-4a02-8fc9-fba8deccfb30",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 27
+    },
+    {
+      "id": "5263f9d2-787e-4ea9-9a41-eaf73986a4d3",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 28
+    },
+    {
+      "id": "8f5cf00e-62a9-45ac-b695-9bbf5585c391",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 29
+    },
+    {
+      "id": "fcc8adc4-95cd-4f72-99fa-f5caca90cd51",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 30
+    },
+    {
+      "id": "77080ba2-ab10-4758-924f-3f74f400dc81",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 31
+    },
+    {
+      "id": "c62993e6-378c-4122-84b2-adce977cc798",
+      "gameid": "a132f0c6-9e52-4bea-ae6e-42deabef635e",
+      "player1": 0,
+      "player2": 32
+    },
+    {
+      "id": "23ee16a8-b893-41fc-88f6-077f78db1977",
+      "gameid": "781a7eb7-ee6b-4d9d-b475-10addc42e26a",
+      "player1": 0,
+      "player2": 1
+    },
+    {
+      "id": "17f2a05a-73a0-4201-9435-4618804d2a8b",
+      "gameid": "781a7eb7-ee6b-4d9d-b475-10addc42e26a",
+      "player1": 0,
+      "player2": 2
+    }
+  ]
 }
