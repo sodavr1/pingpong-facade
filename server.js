@@ -5,6 +5,8 @@ import { Server } from 'socket.io';
 
 const app = express();
 const httpServer = createServer(app);
+const PORT = process.env.PORT || 3000;
+
 const io = new Server(httpServer, {
   cors: {
     origin: "http://localhost:3000",
@@ -13,15 +15,12 @@ const io = new Server(httpServer, {
   }
 });
 
+httpServer.listen(PORT);
+
 // Serve static files from the 'public' folder
 app.use(express.static("public"));
 // Socket.IO connection event
-io.on('connection', (socket) => {
-  console.log('A user connected');
-  // Example: Handling disconnection
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
+
   // Handle socket connections
   io.on('connection', (socket) => {
     console.log('A user connected');
@@ -45,9 +44,6 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
       console.log('A user disconnected');
     });
-
-
-  });
 });
 
 function getUsersInRoom(room) {
@@ -59,8 +55,3 @@ function getUsersInRoom(room) {
   }
 }
 
-// Start the server on port 3000
-const PORT = process.env.PORT || 3000;
-httpServer.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
