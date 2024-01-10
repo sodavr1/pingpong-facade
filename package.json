@@ -20,7 +20,7 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "concurrently --kill-others --success= first  \"npm run db\" \"npm run client\" \"npm run server\"   ",
+    "start": "concurrently --kill-others --success=\"all\"  \"npm run db\" \"npm run client\" \"npm run server\"   ",
     "server": "node server.js --port 3000",
     "client": "node public/client.js --port 3000",
     "db": "npx json-server --watch db.json --port 3001"
