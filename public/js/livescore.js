@@ -4,7 +4,7 @@ let liveScores = [];
 
 setInterval(function () {getScoreData();}, 20000);
 async function getScoreData() {
-        const response = await fetch('localhost:3001/livescore');
+        const response = await fetch('http://localhost:3001/livescore');
         liveScores = await response.json();
         liveScorePlayer1 = liveScores[liveScores.length-1].player1;
         liveScorePlayer2 =liveScores[liveScores.length-1].player2;

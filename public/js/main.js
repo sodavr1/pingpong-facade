@@ -24,12 +24,9 @@ socket.on("disconnect", (reason) => {
     socket.emit('userList', 'pong');
     updateUserLength(users.length);
 });
-
-socket.on('paddleMove', (paddleData) => {
-    // Toggle 1 into 0, and 0 into 1
-    // const opponentPaddleIndex = 1 - paddleIndex;
-    // paddleX[opponentPaddleIndex] = paddleData.xPosition;
-});
+socket.on('paddleMove', position => {
+    socket.to('pong').emit('paddleMove', position)
+})
 
 socket.on('ballMove', (ballData) => {
     // ({ ballX, ballY, score } = ballData);
@@ -38,6 +35,33 @@ socket.on('ballMove', (ballData) => {
 socket.on('userList', (users) => {
     console.log('Users in the room:', users.length);
     updateUserLength(users.length);
+});
+
+socket.on('updateLeftPaddle', (position) => {
+    // Handle left Paddle position update
+    if (position === 'ArrowDown'){
+        leftPaddle.dy = paddleSpeed;
+        console.log('Left Paddle:', position);
+    }
+    else{
+        leftPaddle.dy = -paddleSpeed;
+        console.log('Left Paddle:', position);
+    }
+    console.log('Left Paddle:', position);
+});
+
+socket.on('updateRightPaddle', (keyCode) => {
+    console.log('Right Paddle KC', keyCode.key);
+    // Handle rightPaddle position update
+    if (keyCode === 'ArrowDown'){
+        rightPaddle.dy = paddleSpeed;
+        console.log('Right Paddle:', keyCode);
+    }
+    if (keyCode === 'ArrowUp'){
+        rightPaddle.dy = -paddleSpeed;
+        console.log('Right Paddle:', keyCode);
+    }
+    // console.log('Right Paddle:', position);
 });
 
 function updateUserLength(newUserLength){
@@ -163,6 +187,7 @@ function endGameAnimation() {
     requestAnimationFrame(animate);
 }
 
+// reset game state
 function resetGame() {
     timeLimit = 20;
     leftPlayerScore = 0;
@@ -227,7 +252,6 @@ function loop() {
 
             }
             ball.resetting = true;
-
             setTimeout(() => {
                 ball.resetting = false;
                 ball.x = canvas.width / 2;
@@ -277,18 +301,43 @@ document.getElementById('startButton').addEventListener('click', function () {
 });
 
 document.addEventListener('keydown', function (e) {
+    // if (e.which === 38) {
+    //     rightPaddle.dy = -paddleSpeed;
+    // } else if (e.which === 40) {
+    //     rightPaddle.dy = paddleSpeed;
+    // }
+    // if (e.which === 87) {
+    //     leftPaddle.dy = -paddleSpeed;
+    // } else if (e.which === 83) {
+    //     leftPaddle.dy = paddleSpeed;
+    // }
+    // const keyCode = event.code;
+    const keyCode = event.code;
+    let paddle;
+    let dir;
     if (e.which === 38) {
-        rightPaddle.dy = -paddleSpeed;
-        socket.emit('paddleMove', {
-            // xPosition: paddleX[paddleIndex],
-        });
-    } else if (e.which === 40) {
-        rightPaddle.dy = paddleSpeed;
+        dir = 'up'
+        paddle = 'rightPaddle';
+        socket.emit('updateRightPaddle', dir);
     }
-    if (e.which === 87) {
-        leftPaddle.dy = -paddleSpeed;
-    } else if (e.which === 83) {
-        leftPaddle.dy = paddleSpeed;
+    else if (e.which === 40){
+        dir = 'down'
+        paddle = 'rightPaddle';
+        socket.emit('updateRightPaddle', dir);
+    }
+
+    if (e.which === 87 ) {
+        dir = 'up'
+        paddle = 'leftPaddle';
+        socket.emit('updateLeftPaddle', dir);
+    }
+    else if (keyCode === e.which === 83){
+        dir = 'down'
+        paddle = 'leftPaddle';
+        socket.emit('updateLeftPaddle', dir);
+    }
+    if (paddle) {
+        socket.emit(paddle, { keyCode });
     }
 });
 
@@ -309,7 +358,7 @@ canvas.addEventListener('touchmove', handleTouchMove);
 // Variables to store touch positions
 let leftTouchY = null; let rightTouchY = null;
 
-// Handle touch start event
+// MOBILE CONTROLS Handle touch start event
 function handleTouchStart(event) {
     event.preventDefault();
     // Iterate through all touches
@@ -397,7 +446,7 @@ function updateLiveScoreData() {
             .then((json) => console.log(json));
     }
 }
-// update backend with final score or live score
+// update backend with final score
 function SendScoreData() {
     if (gameOver) {
         console.log(gameUUID);

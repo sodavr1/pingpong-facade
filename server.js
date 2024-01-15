@@ -24,12 +24,16 @@ app.use(express.static("public"));
   // Handle socket connections
   io.on('connection', (socket) => {
     console.log('A user connected');
-
     // Event listener for the 'join' event
     socket.on('joinRoom', (roomName) => {
       // Join the specified room
       socket.join(roomName);
+
+      // testing room users logging
       console.log('roomename'+roomName)
+      console.log(getUsersInRoom(roomName));
+      console.log('users in room count '+getUsersInRoom(roomName).length)
+
       io.to(roomName).emit('userList', getUsersInRoom(roomName));
     });
 
@@ -39,6 +43,15 @@ app.use(express.static("public"));
       const roomName = Object.keys(socket.rooms)[1]; // Get the room name
       io.to(roomName).emit('startGame');
     });
+
+    socket.on('leftPaddle', (position) => {
+      io.emit('updateLeftPaddle', position);
+    });
+
+    socket.on('rightPaddle', (position) => {
+      io.emit('updateRightPaddle', position);
+    });
+
 
     // Handle disconnections
     socket.on('disconnect', () => {
